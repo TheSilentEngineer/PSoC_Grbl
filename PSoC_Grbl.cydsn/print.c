@@ -26,13 +26,13 @@
 //PSOC Map these functions to PSoC
 void printString(const char *s)
 {
-  UART_PutString(s);
+  USBUART_PutString(s);
 }
 
 // Print a string stored in PGM-memory
 void printPgmString(const char *s)
 {
-  UART_PutString(s);
+  USBUART_PutString(s);
 }
 
 // Prints an uint8 variable in base 10.

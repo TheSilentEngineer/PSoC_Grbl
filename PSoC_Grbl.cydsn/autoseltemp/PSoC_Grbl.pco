@@ -1,0 +1,138 @@
+# PSoC_Grbl
+# 2018-06-30 21:46:04Z
+
+# IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 0
+# IO_1@[IOP=(1)][IoId=(1)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 1
+# IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 3
+# IO_3@[IOP=(2)][IoId=(3)] is reserved: TraceEnabled
+dont_use_io iocell 2 3
+# IO_4@[IOP=(2)][IoId=(4)] is reserved: TraceEnabled
+dont_use_io iocell 2 4
+# IO_5@[IOP=(2)][IoId=(5)] is reserved: TraceEnabled
+dont_use_io iocell 2 5
+# IO_6@[IOP=(2)][IoId=(6)] is reserved: TraceEnabled
+dont_use_io iocell 2 6
+# IO_7@[IOP=(2)][IoId=(7)] is reserved: TraceEnabled
+dont_use_io iocell 2 7
+dont_use_location 0 0
+dont_use_location 1 0
+dont_use_location 2 0
+dont_use_location 3 0
+dont_use_location sarcell -1 -1 1
+set_location "ClockBlock" clockblockcell -1 -1 0
+set_io "\LCD:LCDPort(0)\" iocell 3 0
+set_io "\LCD:LCDPort(1)\" iocell 3 1
+set_io "\LCD:LCDPort(2)\" iocell 3 2
+set_io "\LCD:LCDPort(3)\" iocell 3 3
+set_io "\LCD:LCDPort(4)\" iocell 3 4
+set_io "\LCD:LCDPort(5)\" iocell 3 5
+set_io "\LCD:LCDPort(6)\" iocell 3 6
+set_io "Pin_Step_Y(0)" iocell 0 1
+set_io "Probe_Pin(0)" iocell 15 2
+set_io "Control_Pin(0)" iocell 12 0
+set_io "Control_Pin(1)" iocell 12 1
+set_io "Control_Pin(2)" iocell 12 2
+set_io "Control_Pin(3)" iocell 12 3
+set_io "Pin_Dir_Z(0)" iocell 0 6
+set_io "Pin_Dir_Y(0)" iocell 0 5
+set_io "Pin_Dir_X(0)" iocell 0 4
+set_io "Pin_Step_Z(0)" iocell 15 4
+set_io "Pin_Step_X(0)" iocell 0 0
+set_io "Flood_Coolant_Pin(0)" iocell 3 7
+set_io "Pin_Spindle(0)" iocell 2 0
+set_io "Pin_Spindle_Direction(0)" iocell 2 1
+set_io "Pin_Spindle_Enable(0)" iocell 2 2
+set_io "Mist_Coolant_Pin(0)" iocell 12 4
+set_io "Pin_Quad_A(0)" iocell 1 7
+set_io "Pin_Quad_B(0)" iocell 1 6
+set_io "Pin_Encoder_Sw(0)" iocell 1 5
+set_io "Pin_X_Lim(0)" iocell 1 2
+set_io "Pin_Y_Lim(0)" iocell 15 0
+set_io "Pin_Z_Lim(0)" iocell 1 4
+set_io "Stepper_Enable_Pin(0)" iocell 15 3
+set_io "\USBUART:Dm(0)\" iocell 15 7
+set_location "\USBUART:Dp\" logicalport -1 -1 15
+set_io "\USBUART:Dp(0)\" iocell 15 6
+set_io "LED(0)" iocell 15 5
+set_location "Net_612" 1 1 0 1
+set_location "Net_611" 1 1 0 3
+set_location "Net_572" 3 1 1 0
+set_location "Net_423" 3 3 1 1
+set_location "Net_584" 3 3 0 1
+set_location "Net_587" 3 1 0 0
+set_location "Net_610" 1 1 1 1
+set_location "Net_639" 3 3 1 0
+set_location "\QuadDec:Cnt16:CounterUDB:reload\" 2 1 0 0
+set_location "\QuadDec:Cnt16:CounterUDB:status_0\" 2 2 1 3
+set_location "\QuadDec:Cnt16:CounterUDB:status_2\" 2 2 1 0
+set_location "\QuadDec:Cnt16:CounterUDB:status_3\" 3 2 0 0
+set_location "\QuadDec:Cnt16:CounterUDB:count_enable\" 2 1 0 2
+set_location "\QuadDec:Net_530\" 2 3 0 2
+set_location "\QuadDec:Net_611\" 2 3 0 1
+set_location "\LED_PWM:PWMUDB:status_2\" 0 1 0 3
+set_location "isr_Control" interrupt -1 -1 3
+set_location "\Status_Control:sts_intr:sts_reg\" 3 3 4
+set_location "\Status_Limit:sts_intr:sts_reg\" 1 1 4
+set_location "isr_Limits" interrupt -1 -1 6
+set_location "__ONE__" 1 3 0 3
+set_location "\Status_Probe:sts_intr:sts_reg\" 3 2 4
+set_location "isr_Probe" interrupt -1 -1 7
+set_location "\Control_Step_Enable:Sync:ctrl_reg\" 3 1 6
+set_location "\PWM_Spindle:PWMHW\" timercell -1 -1 0
+set_location "\Stepper_Timer:TimerHW\" timercell -1 -1 1
+set_location "isr_Step" interrupt -1 -1 18
+set_location "isr_LCD_Update" interrupt -1 -1 5
+set_location "\QuadDec:Cnt16:CounterUDB:sCTRLReg:ctrlreg\" 2 1 6
+set_location "\QuadDec:Cnt16:CounterUDB:sSTSReg:stsreg\" 2 2 4
+set_location "\QuadDec:Cnt16:CounterUDB:sC16:counterdp:u0\" 3 1 2
+set_location "\QuadDec:Cnt16:CounterUDB:sC16:counterdp:u1\" 2 1 2
+set_location "\QuadDec:bQuadDec:quad_A_delayed_0\" 3 2 1 3
+set_location "\QuadDec:bQuadDec:quad_A_delayed_1\" 3 2 0 2
+set_location "\QuadDec:bQuadDec:quad_A_delayed_2\" 3 2 0 1
+set_location "\QuadDec:bQuadDec:quad_B_delayed_0\" 2 3 0 0
+set_location "\QuadDec:bQuadDec:quad_B_delayed_1\" 2 3 1 3
+set_location "\QuadDec:bQuadDec:quad_B_delayed_2\" 2 3 1 2
+set_location "\QuadDec:bQuadDec:Stsreg\" 2 1 4
+set_location "isr_Enc_Sw" interrupt -1 -1 4
+set_location "\Control_Reg_Dir:Sync:ctrl_reg\" 3 3 6
+set_location "\Control_Reg_Step:Sync:ctrl_reg\" 2 3 6
+set_location "\USBUART:dp_int\" interrupt -1 -1 12
+set_location "\USBUART:USB\" usbcell -1 -1 0
+set_location "\USBUART:ord_int\" interrupt -1 -1 25
+set_location "\USBUART:ep_3\" interrupt -1 -1 2
+set_location "\USBUART:ep_2\" interrupt -1 -1 1
+set_location "\USBUART:ep_1\" interrupt -1 -1 0
+set_location "\USBUART:ep_0\" interrupt -1 -1 24
+set_location "\USBUART:bus_reset\" interrupt -1 -1 23
+set_location "\USBUART:arb_int\" interrupt -1 -1 22
+set_location "\USBUART:sof_int\" interrupt -1 -1 21
+set_location "\LED_PWM:PWMUDB:genblk1:ctrlreg\" 0 1 6
+set_location "\LED_PWM:PWMUDB:genblk8:stsreg\" 0 1 4
+set_location "\LED_PWM:PWMUDB:sP8:pwmdp:u0\" 0 1 2
+set_location "Net_406" 1 1 1 0
+set_location "\QuadDec:Net_1251\" 2 3 0 3
+set_location "\QuadDec:Cnt16:CounterUDB:overflow_reg_i\" 2 3 1 1
+set_location "\QuadDec:Cnt16:CounterUDB:underflow_reg_i\" 3 3 0 0
+set_location "\QuadDec:Net_1275\" 3 3 0 2
+set_location "\QuadDec:Cnt16:CounterUDB:prevCompare\" 2 1 1 3
+set_location "\QuadDec:Net_1251_split\" 2 2 0 0
+set_location "\QuadDec:Cnt16:CounterUDB:count_stored_i\" 2 1 1 0
+set_location "\QuadDec:Net_1203\" 2 1 0 3
+set_location "\QuadDec:bQuadDec:quad_A_filt\" 3 2 1 0
+set_location "\QuadDec:bQuadDec:quad_B_filt\" 2 2 1 2
+set_location "\QuadDec:Net_1260\" 2 1 0 1
+set_location "\QuadDec:bQuadDec:error\" 3 2 0 3
+set_location "\QuadDec:bQuadDec:state_1\" 2 3 1 0
+set_location "\QuadDec:bQuadDec:state_0\" 3 1 1 1
+set_location "\Debouncer_Enc_Sw:DEBOUNCER[0]:d_sync_0\" 0 1 0 2
+set_location "\Debouncer_Enc_Sw:DEBOUNCER[0]:d_sync_1\" 0 1 0 1
+set_location "Net_300" 0 1 0 0
+set_location "Net_378" 1 1 0 2
+set_location "Net_408" 1 1 0 0
+set_location "\LED_PWM:PWMUDB:runmode_enable\" 0 1 1 0
+set_location "\LED_PWM:PWMUDB:prevCompare1\" 0 1 1 2
+set_location "\LED_PWM:PWMUDB:status_0\" 0 1 1 3
+set_location "Net_586" 0 1 1 1

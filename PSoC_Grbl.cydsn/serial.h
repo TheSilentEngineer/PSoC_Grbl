@@ -24,7 +24,7 @@
 #ifndef serial_h
 #define serial_h
   
-void rx_isr_handler(); // define PSOC interrupt handler  
+//void rx_isr_handler(); // define PSOC interrupt handler  
 
 
 #ifndef RX_BUFFER_SIZE
@@ -39,7 +39,6 @@ void rx_isr_handler(); // define PSOC interrupt handler
 #endif
 
 #define SERIAL_NO_DATA 0xff
-
 
 void serial_init();
 
@@ -62,6 +61,8 @@ uint8_t serial_get_rx_buffer_count();
 // Returns the number of bytes used in the TX serial buffer.
 // NOTE: Not used except for debugging and ensuring no TX bottlenecks.
 uint8_t serial_get_tx_buffer_count();
+
+void USBUART_RX_ISR(void);
 
 
 

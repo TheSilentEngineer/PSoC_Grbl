@@ -24,16 +24,19 @@
 
 // Declare system global variable structure
 system_t sys; 
-
+#define LED_ON 1u
+#define LED_OFF 0u
 
 
 int main()
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
 
+    CyGlobalIntEnable; /* Enable global interrupts. */
+   
+      
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
    
-    lcd_init();        
+    lcd_init();
     serial_init();
     settings_init(); // Load Grbl settings from EEPROM
     stepper_init();

@@ -1,7 +1,7 @@
 /*******************************************************************************
 * File Name: project.h
 * 
-* PSoC Creator  4.0 Update 1
+* PSoC Creator  4.0
 *
 * Description:
 * It contains references to all generated header files and should not be modified.
@@ -17,11 +17,10 @@
 #include "cyfitter_cfg.h"
 #include "cydevice.h"
 #include "cydevice_trm.h"
+#include "CyScBoostClk.h"
 #include "cyfitter.h"
 #include "cydisabledsheets.h"
 #include "LCD.h"
-#include "UART.h"
-#include "isr_UART_Rx.h"
 #include "EEPROM_PSoC.h"
 #include "Pin_Step_Y_aliases.h"
 #include "Pin_Step_Y.h"
@@ -83,10 +82,27 @@
 #include "Stepper_Enable_Pin.h"
 #include "Control_Reg_Dir.h"
 #include "Control_Reg_Step.h"
+#include "USBUART.h"
+#include "USBUART_audio.h"
+#include "USBUART_cdc.h"
+#include "USBUART_hid.h"
+#include "USBUART_midi.h"
+#include "USBUART_pvt.h"
+#include "USBUART_cydmac.h"
+#include "USBUART_msc.h"
+#include "PWM_Clock.h"
+#include "LED_PWM.h"
+#include "LED_aliases.h"
+#include "LED.h"
+#include "LED_RXTX_aliases.h"
+#include "LED_RXTX.h"
 #include "LCD_LCDPort_aliases.h"
 #include "LCD_LCDPort.h"
-#include "UART_IntClock.h"
 #include "QuadDec_Cnt16.h"
+#include "USBUART_Dm_aliases.h"
+#include "USBUART_Dm.h"
+#include "USBUART_Dp_aliases.h"
+#include "USBUART_Dp.h"
 #include "core_cm3_psoc5.h"
 #include "CyDmac.h"
 #include "CyFlash.h"

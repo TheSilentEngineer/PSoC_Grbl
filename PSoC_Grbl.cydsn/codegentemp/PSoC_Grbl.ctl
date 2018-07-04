@@ -1,6 +1,6 @@
 -- ======================================================================
 -- PSoC_Grbl.ctl generated from PSoC_Grbl
--- 03/22/2017 at 18:18
+-- 07/02/2018 at 11:15
 -- This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 -- ======================================================================
 

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
   29:Generated_Source\PSoC5/PWM_Spindle_PM.c **** *
   30:Generated_Source\PSoC5/PWM_Spindle_PM.c **** * Parameters:
   31:Generated_Source\PSoC5/PWM_Spindle_PM.c **** *  None
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 2
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 2
 
 
   32:Generated_Source\PSoC5/PWM_Spindle_PM.c **** *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
   69:Generated_Source\PSoC5/PWM_Spindle_PM.c **** 
   70:Generated_Source\PSoC5/PWM_Spindle_PM.c **** /*******************************************************************************
   71:Generated_Source\PSoC5/PWM_Spindle_PM.c **** * Function Name: PWM_Spindle_RestoreConfig
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 3
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 3
 
 
   72:Generated_Source\PSoC5/PWM_Spindle_PM.c **** ********************************************************************************
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  109:Generated_Source\PSoC5/PWM_Spindle_PM.c **** 
  110:Generated_Source\PSoC5/PWM_Spindle_PM.c ****             #if(PWM_Spindle_UseControl)
  111:Generated_Source\PSoC5/PWM_Spindle_PM.c ****                 PWM_Spindle_WriteControlRegister(PWM_Spindle_backup.PWMControlRegister);
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 4
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 4
 
 
  112:Generated_Source\PSoC5/PWM_Spindle_PM.c ****             #endif /* (PWM_Spindle_UseControl) */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  146:Generated_Source\PSoC5/PWM_Spindle_PM.c ****             /* Component is disabled */
  147:Generated_Source\PSoC5/PWM_Spindle_PM.c ****             PWM_Spindle_backup.PWMEnableState = 0u;
   81              		.loc 1 147 0
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 5
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 5
 
 
   82 0014 0022     		movs	r2, #0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  178:Generated_Source\PSoC5/PWM_Spindle_PM.c **** void PWM_Spindle_Wakeup(void) 
  179:Generated_Source\PSoC5/PWM_Spindle_PM.c **** {
  106              		.loc 1 179 0
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 6
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 6
 
 
  107              		.cfi_startproc
@@ -351,38 +351,38 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  147 000b 01       		.uleb128 0x1
  148 000c 0E000000 		.4byte	.LASF22
  149 0010 01       		.byte	0x1
- 150 0011 22020000 		.4byte	.LASF23
- 151 0015 BE010000 		.4byte	.LASF24
+ 150 0011 37020000 		.4byte	.LASF23
+ 151 0015 B8000000 		.4byte	.LASF24
  152 0019 00000000 		.4byte	.Ldebug_ranges0+0
  153 001d 00000000 		.4byte	0
  154 0021 00000000 		.4byte	.Ldebug_line0
  155 0025 02       		.uleb128 0x2
  156 0026 01       		.byte	0x1
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 7
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 7
 
 
  157 0027 06       		.byte	0x6
- 158 0028 86010000 		.4byte	.LASF0
+ 158 0028 D0010000 		.4byte	.LASF0
  159 002c 02       		.uleb128 0x2
  160 002d 01       		.byte	0x1
  161 002e 08       		.byte	0x8
- 162 002f 2B010000 		.4byte	.LASF1
+ 162 002f 75010000 		.4byte	.LASF1
  163 0033 02       		.uleb128 0x2
  164 0034 02       		.byte	0x2
  165 0035 05       		.byte	0x5
- 166 0036 0A020000 		.4byte	.LASF2
+ 166 0036 1F020000 		.4byte	.LASF2
  167 003a 02       		.uleb128 0x2
  168 003b 02       		.byte	0x2
  169 003c 07       		.byte	0x7
- 170 003d 73010000 		.4byte	.LASF3
+ 170 003d BD010000 		.4byte	.LASF3
  171 0041 02       		.uleb128 0x2
  172 0042 04       		.byte	0x4
  173 0043 05       		.byte	0x5
- 174 0044 3E010000 		.4byte	.LASF4
+ 174 0044 88010000 		.4byte	.LASF4
  175 0048 02       		.uleb128 0x2
  176 0049 04       		.byte	0x4
  177 004a 07       		.byte	0x7
- 178 004b BE000000 		.4byte	.LASF5
+ 178 004b 08010000 		.4byte	.LASF5
  179 004f 02       		.uleb128 0x2
  180 0050 08       		.byte	0x8
  181 0051 05       		.byte	0x5
@@ -390,7 +390,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  183 0056 02       		.uleb128 0x2
  184 0057 08       		.byte	0x8
  185 0058 07       		.byte	0x7
- 186 0059 D0000000 		.4byte	.LASF7
+ 186 0059 1A010000 		.4byte	.LASF7
  187 005d 03       		.uleb128 0x3
  188 005e 04       		.byte	0x4
  189 005f 05       		.byte	0x5
@@ -400,25 +400,25 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  193 0066 07       		.byte	0x7
  194 0067 9C000000 		.4byte	.LASF8
  195 006b 04       		.uleb128 0x4
- 196 006c B8000000 		.4byte	.LASF12
+ 196 006c 02010000 		.4byte	.LASF12
  197 0070 02       		.byte	0x2
  198 0071 9201     		.2byte	0x192
  199 0073 2C000000 		.4byte	0x2c
  200 0077 02       		.uleb128 0x2
  201 0078 04       		.byte	0x4
  202 0079 04       		.byte	0x4
- 203 007a 04020000 		.4byte	.LASF9
+ 203 007a 19020000 		.4byte	.LASF9
  204 007e 02       		.uleb128 0x2
  205 007f 08       		.byte	0x8
  206 0080 04       		.byte	0x4
- 207 0081 59010000 		.4byte	.LASF10
+ 207 0081 A3010000 		.4byte	.LASF10
  208 0085 02       		.uleb128 0x2
  209 0086 01       		.byte	0x1
  210 0087 08       		.byte	0x8
- 211 0088 39010000 		.4byte	.LASF11
+ 211 0088 83010000 		.4byte	.LASF11
  212 008c 04       		.uleb128 0x4
- 213 008d 14020000 		.4byte	.LASF13
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 8
+ 213 008d 29020000 		.4byte	.LASF13
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 8
 
 
  214 0091 02       		.byte	0x2
@@ -429,7 +429,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  219 009d 02       		.uleb128 0x2
  220 009e 04       		.byte	0x4
  221 009f 07       		.byte	0x7
- 222 00a0 19020000 		.4byte	.LASF14
+ 222 00a0 2E020000 		.4byte	.LASF14
  223 00a4 06       		.uleb128 0x6
  224 00a5 01       		.byte	0x1
  225 00a6 03       		.byte	0x3
@@ -443,12 +443,12 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  233 00b7 00       		.byte	0
  234 00b8 00       		.byte	0
  235 00b9 08       		.uleb128 0x8
- 236 00ba A5010000 		.4byte	.LASF15
+ 236 00ba EF010000 		.4byte	.LASF15
  237 00be 03       		.byte	0x3
  238 00bf 8B       		.byte	0x8b
  239 00c0 A4000000 		.4byte	0xa4
  240 00c4 09       		.uleb128 0x9
- 241 00c5 E7000000 		.4byte	.LASF16
+ 241 00c5 31010000 		.4byte	.LASF16
  242 00c9 01       		.byte	0x1
  243 00ca 2A       		.byte	0x2a
  244 00cb 00000000 		.4byte	.LFB0
@@ -456,7 +456,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  246 00d3 01       		.uleb128 0x1
  247 00d4 9C       		.byte	0x9c
  248 00d5 09       		.uleb128 0x9
- 249 00d6 11010000 		.4byte	.LASF17
+ 249 00d6 5B010000 		.4byte	.LASF17
  250 00da 01       		.byte	0x1
  251 00db 58       		.byte	0x58
  252 00dc 00000000 		.4byte	.LFB1
@@ -464,7 +464,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  254 00e4 01       		.uleb128 0x1
  255 00e5 9C       		.byte	0x9c
  256 00e6 0A       		.uleb128 0xa
- 257 00e7 47010000 		.4byte	.LASF18
+ 257 00e7 91010000 		.4byte	.LASF18
  258 00eb 01       		.byte	0x1
  259 00ec 88       		.byte	0x88
  260 00ed 00000000 		.4byte	.LFB2
@@ -477,8 +477,8 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  267 0100 35010000 		.4byte	0x135
  268 0104 00       		.byte	0
  269 0105 0A       		.uleb128 0xa
- 270 0106 60010000 		.4byte	.LASF19
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 9
+ 270 0106 AA010000 		.4byte	.LASF19
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 9
 
 
  271 010a 01       		.byte	0x1
@@ -493,7 +493,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  280 011f 3C010000 		.4byte	0x13c
  281 0123 00       		.byte	0
  282 0124 0C       		.uleb128 0xc
- 283 0125 FE000000 		.4byte	.LASF26
+ 283 0125 48010000 		.4byte	.LASF26
  284 0129 01       		.byte	0x1
  285 012a 14       		.byte	0x14
  286 012b B9000000 		.4byte	0xb9
@@ -501,11 +501,11 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  288 0130 03       		.byte	0x3
  289 0131 00000000 		.4byte	PWM_Spindle_backup
  290 0135 0D       		.uleb128 0xd
- 291 0136 F3010000 		.4byte	.LASF20
+ 291 0136 08020000 		.4byte	.LASF20
  292 013a 03       		.byte	0x3
  293 013b 93       		.byte	0x93
  294 013c 0D       		.uleb128 0xd
- 295 013d 92010000 		.4byte	.LASF21
+ 295 013d DC010000 		.4byte	.LASF21
  296 0141 03       		.byte	0x3
  297 0142 DB       		.byte	0xdb
  298 0143 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  325 0018 3E       		.uleb128 0x3e
  326 0019 0B       		.uleb128 0xb
  327 001a 03       		.uleb128 0x3
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 10
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 10
 
 
  328 001b 0E       		.uleb128 0xe
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  382 0051 3B       		.uleb128 0x3b
  383 0052 0B       		.uleb128 0xb
  384 0053 49       		.uleb128 0x49
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 11
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 11
 
 
  385 0054 13       		.uleb128 0x13
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  439 008b 11       		.uleb128 0x11
  440 008c 01       		.uleb128 0x1
  441 008d 12       		.uleb128 0x12
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 12
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 12
 
 
  442 008e 06       		.uleb128 0x6
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  496 0006 00000000 		.4byte	.Ldebug_info0
  497 000a 04       		.byte	0x4
  498 000b 00       		.byte	0
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 13
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 13
 
 
  499 000c 0000     		.2byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  533      676E6564 
  533      20696E74 
  533      00
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 14
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 14
 
 
  534              	.LASF25:
@@ -786,124 +786,127 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 1
  535      6E61626C 
  535      65537461 
  535      746500
- 536              	.LASF12:
- 537 00b8 75696E74 		.ascii	"uint8\000"
- 537      3800
- 538              	.LASF5:
- 539 00be 6C6F6E67 		.ascii	"long unsigned int\000"
- 539      20756E73 
- 539      69676E65 
- 539      6420696E 
- 539      7400
- 540              	.LASF7:
- 541 00d0 6C6F6E67 		.ascii	"long long unsigned int\000"
- 541      206C6F6E 
- 541      6720756E 
- 541      7369676E 
- 541      65642069 
- 542              	.LASF16:
- 543 00e7 50574D5F 		.ascii	"PWM_Spindle_SaveConfig\000"
- 543      5370696E 
- 543      646C655F 
- 543      53617665 
- 543      436F6E66 
- 544              	.LASF26:
- 545 00fe 50574D5F 		.ascii	"PWM_Spindle_backup\000"
- 545      5370696E 
- 545      646C655F 
- 545      6261636B 
- 545      757000
- 546              	.LASF17:
- 547 0111 50574D5F 		.ascii	"PWM_Spindle_RestoreConfig\000"
- 547      5370696E 
- 547      646C655F 
- 547      52657374 
- 547      6F726543 
- 548              	.LASF1:
- 549 012b 756E7369 		.ascii	"unsigned char\000"
- 549      676E6564 
- 549      20636861 
- 549      7200
- 550              	.LASF11:
- 551 0139 63686172 		.ascii	"char\000"
- 551      00
- 552              	.LASF4:
- 553 013e 6C6F6E67 		.ascii	"long int\000"
- 553      20696E74 
- 553      00
- 554              	.LASF18:
- 555 0147 50574D5F 		.ascii	"PWM_Spindle_Sleep\000"
- 555      5370696E 
- 555      646C655F 
- 555      536C6565 
- 555      7000
- 556              	.LASF10:
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 15
+ 536              	.LASF24:
+ 537 00b8 433A5C55 		.ascii	"C:\\Users\\miker\\Documents\\My Libraries\\Code_Rep"
+ 537      73657273 
+ 537      5C6D696B 
+ 537      65725C44 
+ 537      6F63756D 
+ 538 00e6 6F5C5053 		.ascii	"o\\PSoC_Grbl\\PSoC_Grbl.cydsn\000"
+ 538      6F435F47 
+ 538      72626C5C 
+ 538      50536F43 
+ 538      5F477262 
+ 539              	.LASF12:
+ 540 0102 75696E74 		.ascii	"uint8\000"
+ 540      3800
+ 541              	.LASF5:
+ 542 0108 6C6F6E67 		.ascii	"long unsigned int\000"
+ 542      20756E73 
+ 542      69676E65 
+ 542      6420696E 
+ 542      7400
+ 543              	.LASF7:
+ 544 011a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 544      206C6F6E 
+ 544      6720756E 
+ 544      7369676E 
+ 544      65642069 
+ 545              	.LASF16:
+ 546 0131 50574D5F 		.ascii	"PWM_Spindle_SaveConfig\000"
+ 546      5370696E 
+ 546      646C655F 
+ 546      53617665 
+ 546      436F6E66 
+ 547              	.LASF26:
+ 548 0148 50574D5F 		.ascii	"PWM_Spindle_backup\000"
+ 548      5370696E 
+ 548      646C655F 
+ 548      6261636B 
+ 548      757000
+ 549              	.LASF17:
+ 550 015b 50574D5F 		.ascii	"PWM_Spindle_RestoreConfig\000"
+ 550      5370696E 
+ 550      646C655F 
+ 550      52657374 
+ 550      6F726543 
+ 551              	.LASF1:
+ 552 0175 756E7369 		.ascii	"unsigned char\000"
+ 552      676E6564 
+ 552      20636861 
+ 552      7200
+ 553              	.LASF11:
+ 554 0183 63686172 		.ascii	"char\000"
+ 554      00
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 15
 
 
- 557 0159 646F7562 		.ascii	"double\000"
- 557      6C6500
- 558              	.LASF19:
- 559 0160 50574D5F 		.ascii	"PWM_Spindle_Wakeup\000"
- 559      5370696E 
- 559      646C655F 
- 559      57616B65 
- 559      757000
- 560              	.LASF3:
- 561 0173 73686F72 		.ascii	"short unsigned int\000"
- 561      7420756E 
- 561      7369676E 
- 561      65642069 
- 561      6E7400
- 562              	.LASF0:
- 563 0186 7369676E 		.ascii	"signed char\000"
- 563      65642063 
- 563      68617200 
- 564              	.LASF21:
- 565 0192 50574D5F 		.ascii	"PWM_Spindle_Enable\000"
- 565      5370696E 
- 565      646C655F 
- 565      456E6162 
- 565      6C6500
- 566              	.LASF15:
- 567 01a5 50574D5F 		.ascii	"PWM_Spindle_backupStruct\000"
- 567      5370696E 
- 567      646C655F 
- 567      6261636B 
- 567      75705374 
- 568              	.LASF24:
- 569 01be 433A5C55 		.ascii	"C:\\Users\\Bart\\Dropbox\\PSoC\\PSoC_Grbl\\PSoC_Grb"
- 569      73657273 
- 569      5C426172 
- 569      745C4472 
- 569      6F70626F 
- 570 01eb 6C2E6379 		.ascii	"l.cydsn\000"
- 570      64736E00 
+ 555              	.LASF4:
+ 556 0188 6C6F6E67 		.ascii	"long int\000"
+ 556      20696E74 
+ 556      00
+ 557              	.LASF18:
+ 558 0191 50574D5F 		.ascii	"PWM_Spindle_Sleep\000"
+ 558      5370696E 
+ 558      646C655F 
+ 558      536C6565 
+ 558      7000
+ 559              	.LASF10:
+ 560 01a3 646F7562 		.ascii	"double\000"
+ 560      6C6500
+ 561              	.LASF19:
+ 562 01aa 50574D5F 		.ascii	"PWM_Spindle_Wakeup\000"
+ 562      5370696E 
+ 562      646C655F 
+ 562      57616B65 
+ 562      757000
+ 563              	.LASF3:
+ 564 01bd 73686F72 		.ascii	"short unsigned int\000"
+ 564      7420756E 
+ 564      7369676E 
+ 564      65642069 
+ 564      6E7400
+ 565              	.LASF0:
+ 566 01d0 7369676E 		.ascii	"signed char\000"
+ 566      65642063 
+ 566      68617200 
+ 567              	.LASF21:
+ 568 01dc 50574D5F 		.ascii	"PWM_Spindle_Enable\000"
+ 568      5370696E 
+ 568      646C655F 
+ 568      456E6162 
+ 568      6C6500
+ 569              	.LASF15:
+ 570 01ef 50574D5F 		.ascii	"PWM_Spindle_backupStruct\000"
+ 570      5370696E 
+ 570      646C655F 
+ 570      6261636B 
+ 570      75705374 
  571              	.LASF20:
- 572 01f3 50574D5F 		.ascii	"PWM_Spindle_Stop\000"
+ 572 0208 50574D5F 		.ascii	"PWM_Spindle_Stop\000"
  572      5370696E 
  572      646C655F 
  572      53746F70 
  572      00
  573              	.LASF9:
- 574 0204 666C6F61 		.ascii	"float\000"
+ 574 0219 666C6F61 		.ascii	"float\000"
  574      7400
  575              	.LASF2:
- 576 020a 73686F72 		.ascii	"short int\000"
+ 576 021f 73686F72 		.ascii	"short int\000"
  576      7420696E 
  576      7400
  577              	.LASF13:
- 578 0214 72656738 		.ascii	"reg8\000"
+ 578 0229 72656738 		.ascii	"reg8\000"
  578      00
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccXl6BM7.s 			page 16
+
+
  579              	.LASF14:
- 580 0219 73697A65 		.ascii	"sizetype\000"
+ 580 022e 73697A65 		.ascii	"sizetype\000"
  580      74797065 
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccA6XIgw.s 			page 16
-
-
  580      00
  581              	.LASF23:
- 582 0222 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_Spindle_PM.c\000"
+ 582 0237 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_Spindle_PM.c\000"
  582      72617465 
  582      645F536F 
  582      75726365 

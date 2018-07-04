@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
   29:Generated_Source\PSoC5/Pin_Quad_A.c **** * \brief Writes the value to the physical port (data output register), masking
   30:Generated_Source\PSoC5/Pin_Quad_A.c **** *  and shifting the bits appropriately. 
   31:Generated_Source\PSoC5/Pin_Quad_A.c **** *
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 2
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 2
 
 
   32:Generated_Source\PSoC5/Pin_Quad_A.c **** * The data output register controls the signal applied to the physical pin in 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
   52              		.size	Pin_Quad_A_Write, .-Pin_Quad_A_Write
   53              		.section	.text.Pin_Quad_A_SetDriveMode,"ax",%progbits
   54              		.align	2
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 3
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 3
 
 
   55              		.global	Pin_Quad_A_SetDriveMode
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
   77 0012 00BF     		.align	2
   78              	.L5:
   79 0014 0F500040 		.word	1073762319
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 4
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 4
 
 
   80              		.cfi_endproc
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  110              		.align	2
  111              		.global	Pin_Quad_A_ReadDataReg
  112              		.thumb
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 5
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 5
 
 
  113              		.thumb_func
@@ -298,51 +298,51 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  139              	.Ldebug_info0:
  140 0000 1D010000 		.4byte	0x11d
  141 0004 0400     		.2byte	0x4
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 6
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 6
 
 
  142 0006 00000000 		.4byte	.Ldebug_abbrev0
  143 000a 04       		.byte	0x4
  144 000b 01       		.uleb128 0x1
- 145 000c 8B000000 		.4byte	.LASF20
+ 145 000c 7F000000 		.4byte	.LASF20
  146 0010 01       		.byte	0x1
- 147 0011 26010000 		.4byte	.LASF21
- 148 0015 A2010000 		.4byte	.LASF22
+ 147 0011 1A010000 		.4byte	.LASF21
+ 148 0015 6D010000 		.4byte	.LASF22
  149 0019 00000000 		.4byte	.Ldebug_ranges0+0
  150 001d 00000000 		.4byte	0
  151 0021 00000000 		.4byte	.Ldebug_line0
  152 0025 02       		.uleb128 0x2
  153 0026 01       		.byte	0x1
  154 0027 06       		.byte	0x6
- 155 0028 2F000000 		.4byte	.LASF0
+ 155 0028 E0010000 		.4byte	.LASF0
  156 002c 02       		.uleb128 0x2
  157 002d 01       		.byte	0x1
  158 002e 08       		.byte	0x8
- 159 002f 3B000000 		.4byte	.LASF1
+ 159 002f 2F000000 		.4byte	.LASF1
  160 0033 02       		.uleb128 0x2
  161 0034 02       		.byte	0x2
  162 0035 05       		.byte	0x5
- 163 0036 79010000 		.4byte	.LASF2
+ 163 0036 B7010000 		.4byte	.LASF2
  164 003a 02       		.uleb128 0x2
  165 003b 02       		.byte	0x2
  166 003c 07       		.byte	0x7
- 167 003d 60000000 		.4byte	.LASF3
+ 167 003d 54000000 		.4byte	.LASF3
  168 0041 02       		.uleb128 0x2
  169 0042 04       		.byte	0x4
  170 0043 05       		.byte	0x5
- 171 0044 99010000 		.4byte	.LASF4
+ 171 0044 D7010000 		.4byte	.LASF4
  172 0048 02       		.uleb128 0x2
  173 0049 04       		.byte	0x4
  174 004a 07       		.byte	0x7
- 175 004b 4E000000 		.4byte	.LASF5
+ 175 004b 42000000 		.4byte	.LASF5
  176 004f 02       		.uleb128 0x2
  177 0050 08       		.byte	0x8
  178 0051 05       		.byte	0x5
- 179 0052 66010000 		.4byte	.LASF6
+ 179 0052 5A010000 		.4byte	.LASF6
  180 0056 02       		.uleb128 0x2
  181 0057 08       		.byte	0x8
  182 0058 07       		.byte	0x7
- 183 0059 4A010000 		.4byte	.LASF7
+ 183 0059 3E010000 		.4byte	.LASF7
  184 005d 03       		.uleb128 0x3
  185 005e 04       		.byte	0x4
  186 005f 05       		.byte	0x5
@@ -350,15 +350,15 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  188 0064 02       		.uleb128 0x2
  189 0065 04       		.byte	0x4
  190 0066 07       		.byte	0x7
- 191 0067 19010000 		.4byte	.LASF8
+ 191 0067 0D010000 		.4byte	.LASF8
  192 006b 04       		.uleb128 0x4
- 193 006c 83010000 		.4byte	.LASF12
+ 193 006c C1010000 		.4byte	.LASF12
  194 0070 02       		.byte	0x2
  195 0071 9201     		.2byte	0x192
  196 0073 2C000000 		.4byte	0x2c
  197 0077 02       		.uleb128 0x2
  198 0078 04       		.byte	0x4
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 7
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 7
 
 
  199 0079 04       		.byte	0x4
@@ -366,20 +366,20 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  201 007e 02       		.uleb128 0x2
  202 007f 08       		.byte	0x8
  203 0080 04       		.byte	0x4
- 204 0081 84000000 		.4byte	.LASF10
+ 204 0081 78000000 		.4byte	.LASF10
  205 0085 02       		.uleb128 0x2
  206 0086 01       		.byte	0x1
  207 0087 08       		.byte	0x8
- 208 0088 74010000 		.4byte	.LASF11
+ 208 0088 68010000 		.4byte	.LASF11
  209 008c 04       		.uleb128 0x4
- 210 008d 49000000 		.4byte	.LASF13
+ 210 008d 3D000000 		.4byte	.LASF13
  211 0091 02       		.byte	0x2
  212 0092 3C02     		.2byte	0x23c
  213 0094 98000000 		.4byte	0x98
  214 0098 05       		.uleb128 0x5
  215 0099 6B000000 		.4byte	0x6b
  216 009d 06       		.uleb128 0x6
- 217 009e 73000000 		.4byte	.LASF14
+ 217 009e 67000000 		.4byte	.LASF14
  218 00a2 01       		.byte	0x1
  219 00a3 39       		.byte	0x39
  220 00a4 00000000 		.4byte	.LFB0
@@ -410,15 +410,15 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  245 00e1 9C       		.byte	0x9c
  246 00e2 F6000000 		.4byte	0xf6
  247 00e6 07       		.uleb128 0x7
- 248 00e7 61010000 		.4byte	.LASF17
+ 248 00e7 55010000 		.4byte	.LASF17
  249 00eb 01       		.byte	0x1
  250 00ec 5A       		.byte	0x5a
  251 00ed 6B000000 		.4byte	0x6b
  252 00f1 34000000 		.4byte	.LLST2
  253 00f5 00       		.byte	0
  254 00f6 09       		.uleb128 0x9
- 255 00f7 89010000 		.4byte	.LASF18
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 8
+ 255 00f7 C7010000 		.4byte	.LASF18
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 8
 
 
  256 00fb 01       		.byte	0x1
@@ -429,7 +429,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  261 0109 01       		.uleb128 0x1
  262 010a 9C       		.byte	0x9c
  263 010b 09       		.uleb128 0x9
- 264 010c D7010000 		.4byte	.LASF19
+ 264 010c EC010000 		.4byte	.LASF19
  265 0110 01       		.byte	0x1
  266 0111 8D       		.byte	0x8d
  267 0112 6B000000 		.4byte	0x6b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  310 0023 3E       		.uleb128 0x3e
  311 0024 0B       		.uleb128 0xb
  312 0025 03       		.uleb128 0x3
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 9
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 9
 
 
  313 0026 08       		.uleb128 0x8
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  367 005d 0B       		.uleb128 0xb
  368 005e 3B       		.uleb128 0x3b
  369 005f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 10
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 10
 
 
  370 0060 49       		.uleb128 0x49
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  424 000b 0A000000 		.4byte	.LVL2
  425 000f 18000000 		.4byte	.LFE0
  426 0013 0400     		.2byte	0x4
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 11
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 11
 
 
  427 0015 F3       		.byte	0xf3
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  481 001c 0C000000 		.4byte	.LFE3
  482 0020 00000000 		.4byte	0
  483 0024 00000000 		.4byte	0
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 12
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 12
 
 
  484              		.section	.debug_line,"",%progbits
@@ -684,115 +684,118 @@ ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 1
  494      5F415F53 
  494      65744472 
  494      6976654D 
- 495              	.LASF0:
- 496 002f 7369676E 		.ascii	"signed char\000"
- 496      65642063 
- 496      68617200 
- 497              	.LASF1:
- 498 003b 756E7369 		.ascii	"unsigned char\000"
- 498      676E6564 
- 498      20636861 
- 498      7200
- 499              	.LASF13:
- 500 0049 72656738 		.ascii	"reg8\000"
- 500      00
- 501              	.LASF5:
- 502 004e 6C6F6E67 		.ascii	"long unsigned int\000"
- 502      20756E73 
- 502      69676E65 
- 502      6420696E 
- 502      7400
- 503              	.LASF3:
- 504 0060 73686F72 		.ascii	"short unsigned int\000"
- 504      7420756E 
- 504      7369676E 
- 504      65642069 
- 504      6E7400
- 505              	.LASF14:
- 506 0073 50696E5F 		.ascii	"Pin_Quad_A_Write\000"
- 506      51756164 
- 506      5F415F57 
- 506      72697465 
- 506      00
- 507              	.LASF10:
- 508 0084 646F7562 		.ascii	"double\000"
- 508      6C6500
- 509              	.LASF20:
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 13
+ 495              	.LASF1:
+ 496 002f 756E7369 		.ascii	"unsigned char\000"
+ 496      676E6564 
+ 496      20636861 
+ 496      7200
+ 497              	.LASF13:
+ 498 003d 72656738 		.ascii	"reg8\000"
+ 498      00
+ 499              	.LASF5:
+ 500 0042 6C6F6E67 		.ascii	"long unsigned int\000"
+ 500      20756E73 
+ 500      69676E65 
+ 500      6420696E 
+ 500      7400
+ 501              	.LASF3:
+ 502 0054 73686F72 		.ascii	"short unsigned int\000"
+ 502      7420756E 
+ 502      7369676E 
+ 502      65642069 
+ 502      6E7400
+ 503              	.LASF14:
+ 504 0067 50696E5F 		.ascii	"Pin_Quad_A_Write\000"
+ 504      51756164 
+ 504      5F415F57 
+ 504      72697465 
+ 504      00
+ 505              	.LASF10:
+ 506 0078 646F7562 		.ascii	"double\000"
+ 506      6C6500
+ 507              	.LASF20:
+ 508 007f 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 508      4320342E 
+ 508      392E3320 
+ 508      32303135 
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 13
 
 
- 510 008b 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 510      4320342E 
- 510      392E3320 
- 510      32303135 
- 510      30333033 
- 511 00be 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 511      20726576 
- 511      6973696F 
- 511      6E203232 
- 511      31323230 
- 512 00f1 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 512      66756E63 
- 512      74696F6E 
- 512      2D736563 
- 512      74696F6E 
- 513              	.LASF8:
- 514 0119 756E7369 		.ascii	"unsigned int\000"
- 514      676E6564 
- 514      20696E74 
- 514      00
- 515              	.LASF21:
- 516 0126 47656E65 		.ascii	"Generated_Source\\PSoC5\\Pin_Quad_A.c\000"
- 516      72617465 
- 516      645F536F 
- 516      75726365 
- 516      5C50536F 
- 517              	.LASF7:
- 518 014a 6C6F6E67 		.ascii	"long long unsigned int\000"
- 518      206C6F6E 
- 518      6720756E 
- 518      7369676E 
- 518      65642069 
- 519              	.LASF17:
- 520 0161 6D6F6465 		.ascii	"mode\000"
- 520      00
- 521              	.LASF6:
- 522 0166 6C6F6E67 		.ascii	"long long int\000"
- 522      206C6F6E 
- 522      6720696E 
- 522      7400
- 523              	.LASF11:
- 524 0174 63686172 		.ascii	"char\000"
- 524      00
- 525              	.LASF2:
- 526 0179 73686F72 		.ascii	"short int\000"
- 526      7420696E 
- 526      7400
- 527              	.LASF12:
- 528 0183 75696E74 		.ascii	"uint8\000"
- 528      3800
- 529              	.LASF18:
- 530 0189 50696E5F 		.ascii	"Pin_Quad_A_Read\000"
- 530      51756164 
- 530      5F415F52 
- 530      65616400 
- 531              	.LASF4:
- 532 0199 6C6F6E67 		.ascii	"long int\000"
-ARM GAS  C:\Users\Bart\AppData\Local\Temp\ccB8CIAu.s 			page 14
+ 508      30333033 
+ 509 00b2 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 509      20726576 
+ 509      6973696F 
+ 509      6E203232 
+ 509      31323230 
+ 510 00e5 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 510      66756E63 
+ 510      74696F6E 
+ 510      2D736563 
+ 510      74696F6E 
+ 511              	.LASF8:
+ 512 010d 756E7369 		.ascii	"unsigned int\000"
+ 512      676E6564 
+ 512      20696E74 
+ 512      00
+ 513              	.LASF21:
+ 514 011a 47656E65 		.ascii	"Generated_Source\\PSoC5\\Pin_Quad_A.c\000"
+ 514      72617465 
+ 514      645F536F 
+ 514      75726365 
+ 514      5C50536F 
+ 515              	.LASF7:
+ 516 013e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 516      206C6F6E 
+ 516      6720756E 
+ 516      7369676E 
+ 516      65642069 
+ 517              	.LASF17:
+ 518 0155 6D6F6465 		.ascii	"mode\000"
+ 518      00
+ 519              	.LASF6:
+ 520 015a 6C6F6E67 		.ascii	"long long int\000"
+ 520      206C6F6E 
+ 520      6720696E 
+ 520      7400
+ 521              	.LASF11:
+ 522 0168 63686172 		.ascii	"char\000"
+ 522      00
+ 523              	.LASF22:
+ 524 016d 433A5C55 		.ascii	"C:\\Users\\miker\\Documents\\My Libraries\\Code_Rep"
+ 524      73657273 
+ 524      5C6D696B 
+ 524      65725C44 
+ 524      6F63756D 
+ 525 019b 6F5C5053 		.ascii	"o\\PSoC_Grbl\\PSoC_Grbl.cydsn\000"
+ 525      6F435F47 
+ 525      72626C5C 
+ 525      50536F43 
+ 525      5F477262 
+ 526              	.LASF2:
+ 527 01b7 73686F72 		.ascii	"short int\000"
+ 527      7420696E 
+ 527      7400
+ 528              	.LASF12:
+ 529 01c1 75696E74 		.ascii	"uint8\000"
+ 529      3800
+ARM GAS  C:\Users\miker\AppData\Local\Temp\ccMqXAOQ.s 			page 14
 
 
- 532      20696E74 
- 532      00
- 533              	.LASF22:
- 534 01a2 433A5C55 		.ascii	"C:\\Users\\Bart\\Dropbox\\PSoC\\PSoC_Grbl\\PSoC_Grb"
- 534      73657273 
- 534      5C426172 
- 534      745C4472 
- 534      6F70626F 
- 535 01cf 6C2E6379 		.ascii	"l.cydsn\000"
- 535      64736E00 
+ 530              	.LASF18:
+ 531 01c7 50696E5F 		.ascii	"Pin_Quad_A_Read\000"
+ 531      51756164 
+ 531      5F415F52 
+ 531      65616400 
+ 532              	.LASF4:
+ 533 01d7 6C6F6E67 		.ascii	"long int\000"
+ 533      20696E74 
+ 533      00
+ 534              	.LASF0:
+ 535 01e0 7369676E 		.ascii	"signed char\000"
+ 535      65642063 
+ 535      68617200 
  536              	.LASF19:
- 537 01d7 50696E5F 		.ascii	"Pin_Quad_A_ReadDataReg\000"
+ 537 01ec 50696E5F 		.ascii	"Pin_Quad_A_ReadDataReg\000"
  537      51756164 
  537      5F415F52 
  537      65616444 

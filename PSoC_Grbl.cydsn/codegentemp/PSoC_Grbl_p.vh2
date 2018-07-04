@@ -1,6 +1,6 @@
 -- Project:   PSoC_Grbl
--- Generated: 03/22/2017 18:18:53
--- PSoC Creator  4.0 Update 1
+-- Generated: 07/02/2018 11:15:15
+-- PSoC Creator  4.0
 
 ENTITY PSoC_Grbl IS
     PORT(
@@ -11,8 +11,6 @@ ENTITY PSoC_Grbl IS
         \LCD:LCDPort(4)_PAD\ : OUT std_ulogic;
         \LCD:LCDPort(5)_PAD\ : OUT std_ulogic;
         \LCD:LCDPort(6)_PAD\ : OUT std_ulogic;
-        Rx_1(0)_PAD : IN std_ulogic;
-        Tx_1(0)_PAD : OUT std_ulogic;
         Pin_Step_Y(0)_PAD : OUT std_ulogic;
         Probe_Pin(0)_PAD : IN std_ulogic;
         Control_Pin(0)_PAD : IN std_ulogic;
@@ -35,7 +33,9 @@ ENTITY PSoC_Grbl IS
         Pin_X_Lim(0)_PAD : IN std_ulogic;
         Pin_Y_Lim(0)_PAD : IN std_ulogic;
         Pin_Z_Lim(0)_PAD : IN std_ulogic;
-        Stepper_Enable_Pin(0)_PAD : OUT std_ulogic);
+        Stepper_Enable_Pin(0)_PAD : OUT std_ulogic;
+        LED(0)_PAD : OUT std_ulogic;
+        LED_RXTX(0)_PAD : OUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -58,6 +58,11 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Grbl IS
     SIGNAL ClockBlock_IMO : bit;
     SIGNAL ClockBlock_MASTER_CLK : bit;
     SIGNAL ClockBlock_PLL_OUT : bit;
+    SIGNAL ClockBlock_ScBoostClk : bit;
+    ATTRIBUTE global_signal OF ClockBlock_ScBoostClk : SIGNAL IS true;
+    SIGNAL ClockBlock_ScBoostClk_adig : bit;
+    SIGNAL ClockBlock_ScBoostClk_adig_local : bit;
+    SIGNAL ClockBlock_ScBoostClk_local : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
     SIGNAL Control_Pin(0)__PA : bit;
@@ -65,13 +70,12 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Grbl IS
     SIGNAL Control_Pin(2)__PA : bit;
     SIGNAL Control_Pin(3)__PA : bit;
     SIGNAL Flood_Coolant_Pin(0)__PA : bit;
+    SIGNAL LED(0)__PA : bit;
+    SIGNAL LED_RXTX(0)__PA : bit;
     SIGNAL Mist_Coolant_Pin(0)__PA : bit;
     SIGNAL Net_107 : bit;
     SIGNAL Net_108 : bit;
     SIGNAL Net_110 : bit;
-    SIGNAL Net_14 : bit;
-    SIGNAL Net_15 : bit;
-    SIGNAL Net_20 : bit;
     SIGNAL Net_212 : bit;
     SIGNAL Net_234 : bit;
     ATTRIBUTE global_signal OF Net_234 : SIGNAL IS true;
@@ -88,7 +92,6 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Grbl IS
     ATTRIBUTE global_signal OF Net_298 : SIGNAL IS true;
     SIGNAL Net_298_local : bit;
     SIGNAL Net_300 : bit;
-    SIGNAL Net_31 : bit;
     SIGNAL Net_358 : bit;
     SIGNAL Net_377 : bit;
     ATTRIBUTE udbclken_assigned OF Net_377 : SIGNAL IS "True";
@@ -108,12 +111,18 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Grbl IS
     SIGNAL Net_458_local : bit;
     SIGNAL Net_496 : bit;
     SIGNAL Net_501 : bit;
+    SIGNAL Net_511 : bit;
     SIGNAL Net_540 : bit;
     SIGNAL Net_541 : bit;
     SIGNAL Net_572 : bit;
     SIGNAL Net_584 : bit;
     SIGNAL Net_585 : bit;
+    SIGNAL Net_586 : bit;
     SIGNAL Net_587 : bit;
+    SIGNAL Net_590 : bit;
+    ATTRIBUTE udbclken_assigned OF Net_590 : SIGNAL IS "True";
+    ATTRIBUTE global_signal OF Net_590 : SIGNAL IS true;
+    SIGNAL Net_590_local : bit;
     SIGNAL Net_61 : bit;
     SIGNAL Net_610 : bit;
     SIGNAL Net_611 : bit;
@@ -138,9 +147,7 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Grbl IS
     SIGNAL Pin_Y_Lim(0)__PA : bit;
     SIGNAL Pin_Z_Lim(0)__PA : bit;
     SIGNAL Probe_Pin(0)__PA : bit;
-    SIGNAL Rx_1(0)__PA : bit;
     SIGNAL Stepper_Enable_Pin(0)__PA : bit;
-    SIGNAL Tx_1(0)__PA : bit;
     SIGNAL \Control_Reg_Dir:control_3\ : bit;
     SIGNAL \Control_Reg_Dir:control_4\ : bit;
     SIGNAL \Control_Reg_Dir:control_5\ : bit;
@@ -167,6 +174,21 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Grbl IS
     SIGNAL \\\LCD:LCDPort(4)\\__PA\ : bit;
     SIGNAL \\\LCD:LCDPort(5)\\__PA\ : bit;
     SIGNAL \\\LCD:LCDPort(6)\\__PA\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:cmp1_less\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:control_0\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:control_1\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:control_2\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:control_3\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:control_4\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:control_5\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:control_6\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:control_7\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:prevCompare1\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:runmode_enable\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:status_0\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:status_2\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:status_3\ : bit;
+    SIGNAL \LED_PWM:PWMUDB:tc_i\ : bit;
     SIGNAL \PWM_Spindle:Net_54\ : bit;
     SIGNAL \PWM_Spindle:Net_63\ : bit;
     SIGNAL \QuadDec:Cnt16:CounterUDB:cmp_out_i\ : bit;
@@ -211,48 +233,30 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Grbl IS
     SIGNAL \QuadDec:bQuadDec:state_1\ : bit;
     SIGNAL \Stepper_Timer:Net_261\ : bit;
     SIGNAL \Stepper_Timer:Net_51\ : bit;
-    SIGNAL \UART:BUART:counter_load_not\ : bit;
-    SIGNAL \UART:BUART:pollcount_0\ : bit;
-    SIGNAL \UART:BUART:pollcount_1\ : bit;
-    SIGNAL \UART:BUART:rx_bitclk_enable\ : bit;
-    SIGNAL \UART:BUART:rx_count7_tc\ : bit;
-    SIGNAL \UART:BUART:rx_count_0\ : bit;
-    SIGNAL \UART:BUART:rx_count_1\ : bit;
-    SIGNAL \UART:BUART:rx_count_2\ : bit;
-    SIGNAL \UART:BUART:rx_count_3\ : bit;
-    SIGNAL \UART:BUART:rx_count_4\ : bit;
-    SIGNAL \UART:BUART:rx_count_5\ : bit;
-    SIGNAL \UART:BUART:rx_count_6\ : bit;
-    SIGNAL \UART:BUART:rx_counter_load\ : bit;
-    SIGNAL \UART:BUART:rx_fifofull\ : bit;
-    SIGNAL \UART:BUART:rx_fifonotempty\ : bit;
-    SIGNAL \UART:BUART:rx_last\ : bit;
-    SIGNAL \UART:BUART:rx_load_fifo\ : bit;
-    SIGNAL \UART:BUART:rx_postpoll\ : bit;
-    SIGNAL \UART:BUART:rx_state_0\ : bit;
-    SIGNAL \UART:BUART:rx_state_2\ : bit;
-    SIGNAL \UART:BUART:rx_state_3\ : bit;
-    SIGNAL \UART:BUART:rx_state_stop1_reg\ : bit;
-    SIGNAL \UART:BUART:rx_status_3\ : bit;
-    SIGNAL \UART:BUART:rx_status_4\ : bit;
-    SIGNAL \UART:BUART:rx_status_5\ : bit;
-    SIGNAL \UART:BUART:tx_bitclk\ : bit;
-    SIGNAL \UART:BUART:tx_bitclk_enable_pre\ : bit;
-    SIGNAL \UART:BUART:tx_counter_dp\ : bit;
-    SIGNAL \UART:BUART:tx_ctrl_mark_last\ : bit;
-    SIGNAL \UART:BUART:tx_fifo_empty\ : bit;
-    SIGNAL \UART:BUART:tx_fifo_notfull\ : bit;
-    SIGNAL \UART:BUART:tx_shift_out\ : bit;
-    SIGNAL \UART:BUART:tx_state_0\ : bit;
-    SIGNAL \UART:BUART:tx_state_1\ : bit;
-    SIGNAL \UART:BUART:tx_state_2\ : bit;
-    SIGNAL \UART:BUART:tx_status_0\ : bit;
-    SIGNAL \UART:BUART:tx_status_2\ : bit;
-    SIGNAL \UART:BUART:txn\ : bit;
-    SIGNAL \UART:Net_9\ : bit;
-    ATTRIBUTE udbclken_assigned OF \UART:Net_9\ : SIGNAL IS "True";
-    ATTRIBUTE global_signal OF \UART:Net_9\ : SIGNAL IS true;
-    SIGNAL \UART:Net_9_local\ : bit;
+    SIGNAL \\\USBUART:Dm(0)\\__PA\ : bit;
+    SIGNAL \\\USBUART:Dp(0)\\__PA\ : bit;
+    SIGNAL \USBUART:Net_1010\ : bit;
+    SIGNAL \USBUART:Net_1876\ : bit;
+    SIGNAL \USBUART:Net_1889\ : bit;
+    SIGNAL \USBUART:Net_95\ : bit;
+    SIGNAL \USBUART:dma_request_0\ : bit;
+    SIGNAL \USBUART:dma_request_1\ : bit;
+    SIGNAL \USBUART:dma_request_2\ : bit;
+    SIGNAL \USBUART:dma_request_3\ : bit;
+    SIGNAL \USBUART:dma_request_4\ : bit;
+    SIGNAL \USBUART:dma_request_5\ : bit;
+    SIGNAL \USBUART:dma_request_6\ : bit;
+    SIGNAL \USBUART:dma_request_7\ : bit;
+    SIGNAL \USBUART:dma_terminate\ : bit;
+    SIGNAL \USBUART:ep_int_0\ : bit;
+    SIGNAL \USBUART:ep_int_1\ : bit;
+    SIGNAL \USBUART:ep_int_2\ : bit;
+    SIGNAL \USBUART:ep_int_3\ : bit;
+    SIGNAL \USBUART:ep_int_4\ : bit;
+    SIGNAL \USBUART:ep_int_5\ : bit;
+    SIGNAL \USBUART:ep_int_6\ : bit;
+    SIGNAL \USBUART:ep_int_7\ : bit;
+    SIGNAL \USBUART:ep_int_8\ : bit;
     SIGNAL __ONE__ : bit;
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
@@ -277,151 +281,135 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Grbl IS
     SIGNAL \QuadDec:Cnt16:CounterUDB:sC16:counterdp:u1.sor__sig\ : bit;
     SIGNAL \QuadDec:Cnt16:CounterUDB:sC16:counterdp:u1.cmsbo__sig\ : bit;
     ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell1";
-    ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P3[0]";
+    ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P4[1]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(1)\ : LABEL IS "iocell2";
-    ATTRIBUTE Location OF \LCD:LCDPort(1)\ : LABEL IS "P3[1]";
+    ATTRIBUTE Location OF \LCD:LCDPort(1)\ : LABEL IS "P4[2]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(2)\ : LABEL IS "iocell3";
-    ATTRIBUTE Location OF \LCD:LCDPort(2)\ : LABEL IS "P3[2]";
+    ATTRIBUTE Location OF \LCD:LCDPort(2)\ : LABEL IS "P4[3]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(3)\ : LABEL IS "iocell4";
-    ATTRIBUTE Location OF \LCD:LCDPort(3)\ : LABEL IS "P3[3]";
+    ATTRIBUTE Location OF \LCD:LCDPort(3)\ : LABEL IS "P4[4]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(4)\ : LABEL IS "iocell5";
-    ATTRIBUTE Location OF \LCD:LCDPort(4)\ : LABEL IS "P3[4]";
+    ATTRIBUTE Location OF \LCD:LCDPort(4)\ : LABEL IS "P4[5]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(5)\ : LABEL IS "iocell6";
-    ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P3[5]";
+    ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P4[6]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell7";
-    ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P3[6]";
-    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P12[6]";
-    ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell9";
-    ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P12[7]";
-    ATTRIBUTE lib_model OF Pin_Step_Y(0) : LABEL IS "iocell10";
+    ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P4[7]";
+    ATTRIBUTE lib_model OF Pin_Step_Y(0) : LABEL IS "iocell8";
     ATTRIBUTE Location OF Pin_Step_Y(0) : LABEL IS "P0[1]";
-    ATTRIBUTE lib_model OF Probe_Pin(0) : LABEL IS "iocell11";
-    ATTRIBUTE Location OF Probe_Pin(0) : LABEL IS "P12[4]";
-    ATTRIBUTE lib_model OF Control_Pin(0) : LABEL IS "iocell12";
-    ATTRIBUTE Location OF Control_Pin(0) : LABEL IS "P15[0]";
-    ATTRIBUTE lib_model OF Control_Pin(1) : LABEL IS "iocell13";
-    ATTRIBUTE Location OF Control_Pin(1) : LABEL IS "P15[1]";
-    ATTRIBUTE lib_model OF Control_Pin(2) : LABEL IS "iocell14";
-    ATTRIBUTE Location OF Control_Pin(2) : LABEL IS "P15[2]";
-    ATTRIBUTE lib_model OF Control_Pin(3) : LABEL IS "iocell15";
-    ATTRIBUTE Location OF Control_Pin(3) : LABEL IS "P15[3]";
-    ATTRIBUTE lib_model OF Pin_Dir_Z(0) : LABEL IS "iocell16";
+    ATTRIBUTE lib_model OF Probe_Pin(0) : LABEL IS "iocell9";
+    ATTRIBUTE Location OF Probe_Pin(0) : LABEL IS "P6[5]";
+    ATTRIBUTE lib_model OF Control_Pin(0) : LABEL IS "iocell10";
+    ATTRIBUTE Location OF Control_Pin(0) : LABEL IS "P5[0]";
+    ATTRIBUTE lib_model OF Control_Pin(1) : LABEL IS "iocell11";
+    ATTRIBUTE Location OF Control_Pin(1) : LABEL IS "P5[1]";
+    ATTRIBUTE lib_model OF Control_Pin(2) : LABEL IS "iocell12";
+    ATTRIBUTE Location OF Control_Pin(2) : LABEL IS "P5[2]";
+    ATTRIBUTE lib_model OF Control_Pin(3) : LABEL IS "iocell13";
+    ATTRIBUTE Location OF Control_Pin(3) : LABEL IS "P5[3]";
+    ATTRIBUTE lib_model OF Pin_Dir_Z(0) : LABEL IS "iocell14";
     ATTRIBUTE Location OF Pin_Dir_Z(0) : LABEL IS "P0[6]";
-    ATTRIBUTE lib_model OF Pin_Dir_Y(0) : LABEL IS "iocell17";
+    ATTRIBUTE lib_model OF Pin_Dir_Y(0) : LABEL IS "iocell15";
     ATTRIBUTE Location OF Pin_Dir_Y(0) : LABEL IS "P0[5]";
-    ATTRIBUTE lib_model OF Pin_Dir_X(0) : LABEL IS "iocell18";
+    ATTRIBUTE lib_model OF Pin_Dir_X(0) : LABEL IS "iocell16";
     ATTRIBUTE Location OF Pin_Dir_X(0) : LABEL IS "P0[4]";
-    ATTRIBUTE lib_model OF Pin_Step_Z(0) : LABEL IS "iocell19";
-    ATTRIBUTE Location OF Pin_Step_Z(0) : LABEL IS "P15[4]";
-    ATTRIBUTE lib_model OF Pin_Step_X(0) : LABEL IS "iocell20";
+    ATTRIBUTE lib_model OF Pin_Step_Z(0) : LABEL IS "iocell17";
+    ATTRIBUTE Location OF Pin_Step_Z(0) : LABEL IS "P5[6]";
+    ATTRIBUTE lib_model OF Pin_Step_X(0) : LABEL IS "iocell18";
     ATTRIBUTE Location OF Pin_Step_X(0) : LABEL IS "P0[0]";
-    ATTRIBUTE lib_model OF Flood_Coolant_Pin(0) : LABEL IS "iocell21";
-    ATTRIBUTE Location OF Flood_Coolant_Pin(0) : LABEL IS "P2[7]";
-    ATTRIBUTE lib_model OF Pin_Spindle(0) : LABEL IS "iocell22";
+    ATTRIBUTE lib_model OF Flood_Coolant_Pin(0) : LABEL IS "iocell19";
+    ATTRIBUTE Location OF Flood_Coolant_Pin(0) : LABEL IS "P5[4]";
+    ATTRIBUTE lib_model OF Pin_Spindle(0) : LABEL IS "iocell20";
     ATTRIBUTE Location OF Pin_Spindle(0) : LABEL IS "P2[0]";
-    ATTRIBUTE lib_model OF Pin_Spindle_Direction(0) : LABEL IS "iocell23";
+    ATTRIBUTE lib_model OF Pin_Spindle_Direction(0) : LABEL IS "iocell21";
     ATTRIBUTE Location OF Pin_Spindle_Direction(0) : LABEL IS "P2[1]";
-    ATTRIBUTE lib_model OF Pin_Spindle_Enable(0) : LABEL IS "iocell24";
+    ATTRIBUTE lib_model OF Pin_Spindle_Enable(0) : LABEL IS "iocell22";
     ATTRIBUTE Location OF Pin_Spindle_Enable(0) : LABEL IS "P2[2]";
-    ATTRIBUTE lib_model OF Mist_Coolant_Pin(0) : LABEL IS "iocell25";
-    ATTRIBUTE Location OF Mist_Coolant_Pin(0) : LABEL IS "P2[6]";
-    ATTRIBUTE lib_model OF Pin_Quad_A(0) : LABEL IS "iocell26";
+    ATTRIBUTE lib_model OF Mist_Coolant_Pin(0) : LABEL IS "iocell23";
+    ATTRIBUTE Location OF Mist_Coolant_Pin(0) : LABEL IS "P5[5]";
+    ATTRIBUTE lib_model OF Pin_Quad_A(0) : LABEL IS "iocell24";
     ATTRIBUTE Location OF Pin_Quad_A(0) : LABEL IS "P1[7]";
-    ATTRIBUTE lib_model OF Pin_Quad_B(0) : LABEL IS "iocell27";
+    ATTRIBUTE lib_model OF Pin_Quad_B(0) : LABEL IS "iocell25";
     ATTRIBUTE Location OF Pin_Quad_B(0) : LABEL IS "P1[6]";
-    ATTRIBUTE lib_model OF Pin_Encoder_Sw(0) : LABEL IS "iocell28";
+    ATTRIBUTE lib_model OF Pin_Encoder_Sw(0) : LABEL IS "iocell26";
     ATTRIBUTE Location OF Pin_Encoder_Sw(0) : LABEL IS "P1[5]";
-    ATTRIBUTE lib_model OF Pin_X_Lim(0) : LABEL IS "iocell29";
-    ATTRIBUTE Location OF Pin_X_Lim(0) : LABEL IS "P12[0]";
-    ATTRIBUTE lib_model OF Pin_Y_Lim(0) : LABEL IS "iocell30";
-    ATTRIBUTE Location OF Pin_Y_Lim(0) : LABEL IS "P12[1]";
-    ATTRIBUTE lib_model OF Pin_Z_Lim(0) : LABEL IS "iocell31";
-    ATTRIBUTE Location OF Pin_Z_Lim(0) : LABEL IS "P12[2]";
-    ATTRIBUTE lib_model OF Stepper_Enable_Pin(0) : LABEL IS "iocell32";
-    ATTRIBUTE Location OF Stepper_Enable_Pin(0) : LABEL IS "P15[5]";
-    ATTRIBUTE lib_model OF Net_14 : LABEL IS "macrocell1";
-    ATTRIBUTE lib_model OF \UART:BUART:counter_load_not\ : LABEL IS "macrocell2";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_status_0\ : LABEL IS "macrocell3";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_status_2\ : LABEL IS "macrocell4";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_counter_load\ : LABEL IS "macrocell5";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_postpoll\ : LABEL IS "macrocell6";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_4\ : LABEL IS "macrocell7";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_5\ : LABEL IS "macrocell8";
-    ATTRIBUTE lib_model OF Net_612 : LABEL IS "macrocell9";
-    ATTRIBUTE lib_model OF Net_611 : LABEL IS "macrocell10";
-    ATTRIBUTE lib_model OF Net_572 : LABEL IS "macrocell11";
-    ATTRIBUTE lib_model OF Net_423 : LABEL IS "macrocell12";
-    ATTRIBUTE lib_model OF Net_584 : LABEL IS "macrocell13";
-    ATTRIBUTE lib_model OF Net_587 : LABEL IS "macrocell14";
-    ATTRIBUTE lib_model OF Net_610 : LABEL IS "macrocell15";
-    ATTRIBUTE lib_model OF Net_639 : LABEL IS "macrocell16";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell17";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:status_0\ : LABEL IS "macrocell18";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:status_2\ : LABEL IS "macrocell19";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:status_3\ : LABEL IS "macrocell20";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:count_enable\ : LABEL IS "macrocell21";
-    ATTRIBUTE lib_model OF \QuadDec:Net_530\ : LABEL IS "macrocell22";
-    ATTRIBUTE lib_model OF \QuadDec:Net_611\ : LABEL IS "macrocell23";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell24";
-    ATTRIBUTE lib_model OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE lib_model OF \UART:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "datapathcell2";
-    ATTRIBUTE lib_model OF \UART:BUART:sTX:TxSts\ : LABEL IS "statusicell1";
-    ATTRIBUTE lib_model OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "datapathcell3";
-    ATTRIBUTE lib_model OF \UART:BUART:sRX:RxSts\ : LABEL IS "statusicell2";
-    ATTRIBUTE lib_model OF \Status_Control:sts_intr:sts_reg\ : LABEL IS "statusicell3";
-    ATTRIBUTE lib_model OF \Status_Limit:sts_intr:sts_reg\ : LABEL IS "statusicell4";
-    ATTRIBUTE lib_model OF \Status_Probe:sts_intr:sts_reg\ : LABEL IS "statusicell5";
+    ATTRIBUTE lib_model OF Pin_X_Lim(0) : LABEL IS "iocell27";
+    ATTRIBUTE Location OF Pin_X_Lim(0) : LABEL IS "P6[7]";
+    ATTRIBUTE lib_model OF Pin_Y_Lim(0) : LABEL IS "iocell28";
+    ATTRIBUTE Location OF Pin_Y_Lim(0) : LABEL IS "P6[6]";
+    ATTRIBUTE lib_model OF Pin_Z_Lim(0) : LABEL IS "iocell29";
+    ATTRIBUTE Location OF Pin_Z_Lim(0) : LABEL IS "P4[0]";
+    ATTRIBUTE lib_model OF Stepper_Enable_Pin(0) : LABEL IS "iocell30";
+    ATTRIBUTE Location OF Stepper_Enable_Pin(0) : LABEL IS "P6[4]";
+    ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell31";
+    ATTRIBUTE Location OF \USBUART:Dm(0)\ : LABEL IS "P15[7]";
+    ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell32";
+    ATTRIBUTE Location OF \USBUART:Dp(0)\ : LABEL IS "P15[6]";
+    ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell33";
+    ATTRIBUTE Location OF LED(0) : LABEL IS "P15[5]";
+    ATTRIBUTE lib_model OF LED_RXTX(0) : LABEL IS "iocell34";
+    ATTRIBUTE Location OF LED_RXTX(0) : LABEL IS "P15[4]";
+    ATTRIBUTE lib_model OF Net_612 : LABEL IS "macrocell1";
+    ATTRIBUTE lib_model OF Net_611 : LABEL IS "macrocell2";
+    ATTRIBUTE lib_model OF Net_572 : LABEL IS "macrocell3";
+    ATTRIBUTE lib_model OF Net_423 : LABEL IS "macrocell4";
+    ATTRIBUTE lib_model OF Net_584 : LABEL IS "macrocell5";
+    ATTRIBUTE lib_model OF Net_587 : LABEL IS "macrocell6";
+    ATTRIBUTE lib_model OF Net_610 : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF Net_639 : LABEL IS "macrocell8";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell9";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:status_0\ : LABEL IS "macrocell10";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:status_2\ : LABEL IS "macrocell11";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:status_3\ : LABEL IS "macrocell12";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:count_enable\ : LABEL IS "macrocell13";
+    ATTRIBUTE lib_model OF \QuadDec:Net_530\ : LABEL IS "macrocell14";
+    ATTRIBUTE lib_model OF \QuadDec:Net_611\ : LABEL IS "macrocell15";
+    ATTRIBUTE lib_model OF \LED_PWM:PWMUDB:status_2\ : LABEL IS "macrocell16";
+    ATTRIBUTE lib_model OF \Status_Control:sts_intr:sts_reg\ : LABEL IS "statusicell1";
+    ATTRIBUTE lib_model OF \Status_Limit:sts_intr:sts_reg\ : LABEL IS "statusicell2";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell17";
+    ATTRIBUTE lib_model OF \Status_Probe:sts_intr:sts_reg\ : LABEL IS "statusicell3";
     ATTRIBUTE lib_model OF \Control_Step_Enable:Sync:ctrl_reg\ : LABEL IS "controlcell1";
     ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "controlcell2";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:sSTSReg:stsreg\ : LABEL IS "statusicell6";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:sC16:counterdp:u0\ : LABEL IS "datapathcell4";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:sC16:counterdp:u1\ : LABEL IS "datapathcell5";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_A_delayed_0\ : LABEL IS "macrocell25";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_A_delayed_1\ : LABEL IS "macrocell26";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_A_delayed_2\ : LABEL IS "macrocell27";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_B_delayed_0\ : LABEL IS "macrocell28";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_B_delayed_1\ : LABEL IS "macrocell29";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_B_delayed_2\ : LABEL IS "macrocell30";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:Stsreg\ : LABEL IS "statusicell7";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:sSTSReg:stsreg\ : LABEL IS "statusicell4";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:sC16:counterdp:u0\ : LABEL IS "datapathcell1";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:sC16:counterdp:u1\ : LABEL IS "datapathcell2";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_A_delayed_0\ : LABEL IS "macrocell18";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_A_delayed_1\ : LABEL IS "macrocell19";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_A_delayed_2\ : LABEL IS "macrocell20";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_B_delayed_0\ : LABEL IS "macrocell21";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_B_delayed_1\ : LABEL IS "macrocell22";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_B_delayed_2\ : LABEL IS "macrocell23";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:Stsreg\ : LABEL IS "statusicell5";
     ATTRIBUTE lib_model OF \Control_Reg_Dir:Sync:ctrl_reg\ : LABEL IS "controlcell3";
     ATTRIBUTE lib_model OF \Control_Reg_Step:Sync:ctrl_reg\ : LABEL IS "controlcell4";
-    ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell31";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell32";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell33";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_2\ : LABEL IS "macrocell34";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk\ : LABEL IS "macrocell35";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_ctrl_mark_last\ : LABEL IS "macrocell36";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_0\ : LABEL IS "macrocell37";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_load_fifo\ : LABEL IS "macrocell38";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_3\ : LABEL IS "macrocell39";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_2\ : LABEL IS "macrocell40";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "macrocell41";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell42";
-    ATTRIBUTE lib_model OF \UART:BUART:pollcount_1\ : LABEL IS "macrocell43";
-    ATTRIBUTE lib_model OF \UART:BUART:pollcount_0\ : LABEL IS "macrocell44";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_3\ : LABEL IS "macrocell45";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_last\ : LABEL IS "macrocell46";
-    ATTRIBUTE lib_model OF Net_406 : LABEL IS "macrocell47";
-    ATTRIBUTE lib_model OF \QuadDec:Net_1251\ : LABEL IS "macrocell48";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell49";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "macrocell50";
-    ATTRIBUTE lib_model OF \QuadDec:Net_1275\ : LABEL IS "macrocell51";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:prevCompare\ : LABEL IS "macrocell52";
-    ATTRIBUTE lib_model OF \QuadDec:Net_1251_split\ : LABEL IS "macrocell53";
-    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "macrocell54";
-    ATTRIBUTE lib_model OF \QuadDec:Net_1203\ : LABEL IS "macrocell55";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_A_filt\ : LABEL IS "macrocell56";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_B_filt\ : LABEL IS "macrocell57";
-    ATTRIBUTE lib_model OF \QuadDec:Net_1260\ : LABEL IS "macrocell58";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:error\ : LABEL IS "macrocell59";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:state_1\ : LABEL IS "macrocell60";
-    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:state_0\ : LABEL IS "macrocell61";
-    ATTRIBUTE lib_model OF \Debouncer_Enc_Sw:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell62";
-    ATTRIBUTE lib_model OF \Debouncer_Enc_Sw:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell63";
-    ATTRIBUTE lib_model OF Net_300 : LABEL IS "macrocell64";
-    ATTRIBUTE lib_model OF Net_378 : LABEL IS "macrocell65";
-    ATTRIBUTE lib_model OF Net_408 : LABEL IS "macrocell66";
+    ATTRIBUTE Location OF \USBUART:USB\ : LABEL IS "F(USB,0)";
+    ATTRIBUTE lib_model OF \LED_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell5";
+    ATTRIBUTE lib_model OF \LED_PWM:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell6";
+    ATTRIBUTE lib_model OF \LED_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell3";
+    ATTRIBUTE lib_model OF Net_406 : LABEL IS "macrocell24";
+    ATTRIBUTE lib_model OF \QuadDec:Net_1251\ : LABEL IS "macrocell25";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell26";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "macrocell27";
+    ATTRIBUTE lib_model OF \QuadDec:Net_1275\ : LABEL IS "macrocell28";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:prevCompare\ : LABEL IS "macrocell29";
+    ATTRIBUTE lib_model OF \QuadDec:Net_1251_split\ : LABEL IS "macrocell30";
+    ATTRIBUTE lib_model OF \QuadDec:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "macrocell31";
+    ATTRIBUTE lib_model OF \QuadDec:Net_1203\ : LABEL IS "macrocell32";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_A_filt\ : LABEL IS "macrocell33";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:quad_B_filt\ : LABEL IS "macrocell34";
+    ATTRIBUTE lib_model OF \QuadDec:Net_1260\ : LABEL IS "macrocell35";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:error\ : LABEL IS "macrocell36";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:state_1\ : LABEL IS "macrocell37";
+    ATTRIBUTE lib_model OF \QuadDec:bQuadDec:state_0\ : LABEL IS "macrocell38";
+    ATTRIBUTE lib_model OF \Debouncer_Enc_Sw:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell39";
+    ATTRIBUTE lib_model OF \Debouncer_Enc_Sw:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell40";
+    ATTRIBUTE lib_model OF Net_300 : LABEL IS "macrocell41";
+    ATTRIBUTE lib_model OF Net_378 : LABEL IS "macrocell42";
+    ATTRIBUTE lib_model OF Net_408 : LABEL IS "macrocell43";
+    ATTRIBUTE lib_model OF \LED_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell44";
+    ATTRIBUTE lib_model OF \LED_PWM:PWMUDB:prevCompare1\ : LABEL IS "macrocell45";
+    ATTRIBUTE lib_model OF \LED_PWM:PWMUDB:status_0\ : LABEL IS "macrocell46";
+    ATTRIBUTE lib_model OF Net_586 : LABEL IS "macrocell47";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -520,28 +508,6 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Grbl IS
     ATTRIBUTE udb_clk OF controlcell : COMPONENT IS "clock";
     ATTRIBUTE udb_clken OF controlcell : COMPONENT IS "clk_en";
     ATTRIBUTE udb_reset OF controlcell : COMPONENT IS "reset";
-    COMPONENT count7cell
-        PORT (
-            clock : IN std_ulogic;
-            reset : IN std_ulogic;
-            load : IN std_ulogic;
-            enable : IN std_ulogic;
-            clk_en : IN std_ulogic;
-            count_0 : OUT std_ulogic;
-            count_1 : OUT std_ulogic;
-            count_2 : OUT std_ulogic;
-            count_3 : OUT std_ulogic;
-            count_4 : OUT std_ulogic;
-            count_5 : OUT std_ulogic;
-            count_6 : OUT std_ulogic;
-            tc : OUT std_ulogic;
-            clock_n : IN std_ulogic;
-            extclk : IN std_ulogic;
-            extclk_n : IN std_ulogic);
-    END COMPONENT;
-    ATTRIBUTE udb_clk OF count7cell : COMPONENT IS "clock,clock_n,extclk,extclk_n";
-    ATTRIBUTE udb_clken OF count7cell : COMPONENT IS "clk_en";
-    ATTRIBUTE udb_reset OF count7cell : COMPONENT IS "reset";
     COMPONENT datapathcell
         PORT (
             clock : IN std_ulogic;
@@ -757,6 +723,31 @@ ARCHITECTURE __DEFAULT__ OF PSoC_Grbl IS
             cmp : OUT std_ulogic;
             irq : OUT std_ulogic);
     END COMPONENT;
+    COMPONENT usbcell
+        PORT (
+            sof_int : OUT std_ulogic;
+            arb_int : OUT std_ulogic;
+            usb_int : OUT std_ulogic;
+            ord_int : OUT std_ulogic;
+            ept_int_0 : OUT std_ulogic;
+            ept_int_1 : OUT std_ulogic;
+            ept_int_2 : OUT std_ulogic;
+            ept_int_3 : OUT std_ulogic;
+            ept_int_4 : OUT std_ulogic;
+            ept_int_5 : OUT std_ulogic;
+            ept_int_6 : OUT std_ulogic;
+            ept_int_7 : OUT std_ulogic;
+            ept_int_8 : OUT std_ulogic;
+            dma_req_0 : OUT std_ulogic;
+            dma_req_1 : OUT std_ulogic;
+            dma_req_2 : OUT std_ulogic;
+            dma_req_3 : OUT std_ulogic;
+            dma_req_4 : OUT std_ulogic;
+            dma_req_5 : OUT std_ulogic;
+            dma_req_6 : OUT std_ulogic;
+            dma_req_7 : OUT std_ulogic;
+            dma_termin : OUT std_ulogic);
+    END COMPONENT;
 BEGIN
 
     ClockBlock:clockblockcell
@@ -774,12 +765,16 @@ BEGIN
             clk_bus => ClockBlock_BUS_CLK_local,
             dsi_clkin_div => open,
             dsi_glb_div => open,
+            aclk_glb_0 => ClockBlock_ScBoostClk,
+            aclk_0 => ClockBlock_ScBoostClk_local,
+            clk_a_dig_glb_0 => ClockBlock_ScBoostClk_adig,
+            clk_a_dig_0 => ClockBlock_ScBoostClk_adig_local,
             dclk_glb_0 => Net_268,
             dclk_0 => Net_268_local,
-            dclk_glb_1 => \UART:Net_9\,
-            dclk_1 => \UART:Net_9_local\,
-            dclk_glb_2 => Net_458,
-            dclk_2 => Net_458_local,
+            dclk_glb_1 => Net_458,
+            dclk_1 => Net_458_local,
+            dclk_glb_2 => Net_590,
+            dclk_2 => Net_590_local,
             dclk_glb_3 => Net_377,
             dclk_3 => Net_377_local,
             dclk_glb_4 => Net_298,
@@ -986,190 +981,6 @@ BEGIN
             pa_out => \\\LCD:LCDPort(6)\\__PA\,
             oe => open,
             pad_in => \LCD:LCDPort(6)_PAD\,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    Rx_1:logicalport
-        GENERIC MAP(
-            drive_mode => "001",
-            ibuf_enabled => "1",
-            id => "1425177d-0d0e-4468-8bcc-e638e5509a9b",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "I",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "00",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open,
-            in_clock => open);
-
-    Rx_1(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 2,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Rx_1",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
-        PORT MAP(
-            pa_out => Rx_1(0)__PA,
-            oe => open,
-            fb => Net_15,
-            pad_in => Rx_1(0)_PAD,
-            in_clock => ClockBlock_BUS_CLK,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    Tx_1:logicalport
-        GENERIC MAP(
-            drive_mode => "110",
-            ibuf_enabled => "1",
-            id => "ed092b9b-d398-4703-be89-cebf998501f6",
-            init_dr_st => "1",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "1",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "O",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Tx_1(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Tx_1",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
-        PORT MAP(
-            pa_out => Tx_1(0)__PA,
-            oe => open,
-            pin_input => Net_14,
-            pad_out => Tx_1(0)_PAD,
-            pad_in => Tx_1(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -3061,91 +2872,367 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Net_14:macrocell
+    \USBUART:Dm\:logicalport
         GENERIC MAP(
-            eqn_main => "(!main_0)",
-            regmode => 0,
-            clken_mode => 1)
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "c39ef993-d787-4c0c-8ad6-c0c81f866442/8b77a6c4-10a0-4390-971c-672353e2a49c",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "NONCONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 1,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
         PORT MAP(
-            q => Net_14,
-            main_0 => \UART:BUART:txn\);
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
 
-    \UART:BUART:counter_load_not\:macrocell
+    \USBUART:Dm(0)\:iocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * !main_1 * !main_3)",
-            regmode => 0,
-            clken_mode => 1)
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "\USBUART:Dm\",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000100000000000000000000000")
         PORT MAP(
-            q => \UART:BUART:counter_load_not\,
-            main_0 => \UART:BUART:tx_state_1\,
-            main_1 => \UART:BUART:tx_state_0\,
-            main_2 => \UART:BUART:tx_bitclk_enable_pre\,
-            main_3 => \UART:BUART:tx_state_2\);
+            pa_out => \\\USBUART:Dm(0)\\__PA\,
+            oe => open,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
 
-    \UART:BUART:tx_status_0\:macrocell
+    \USBUART:Dp\:logicalport
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4)",
-            regmode => 0,
-            clken_mode => 1)
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "c39ef993-d787-4c0c-8ad6-c0c81f866442/618a72fc-5ddd-4df5-958f-a3d55102db42",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "10",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "I",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "00",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
         PORT MAP(
-            q => \UART:BUART:tx_status_0\,
-            main_0 => \UART:BUART:tx_state_1\,
-            main_1 => \UART:BUART:tx_state_0\,
-            main_2 => \UART:BUART:tx_bitclk_enable_pre\,
-            main_3 => \UART:BUART:tx_fifo_empty\,
-            main_4 => \UART:BUART:tx_state_2\);
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open,
+            interrupt => \USBUART:Net_1010\,
+            in_clock => open);
 
-    \UART:BUART:tx_status_2\:macrocell
+    \USBUART:Dp(0)\:iocell
         GENERIC MAP(
-            eqn_main => "(!main_0)",
-            regmode => 0,
-            clken_mode => 1)
+            in_sync_mode => 2,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "\USBUART:Dp\",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000010000000000000000000000")
         PORT MAP(
-            q => \UART:BUART:tx_status_2\,
-            main_0 => \UART:BUART:tx_fifo_notfull\);
+            pa_out => \\\USBUART:Dp(0)\\__PA\,
+            oe => open,
+            in_clock => ClockBlock_BUS_CLK,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
 
-    \UART:BUART:rx_counter_load\:macrocell
+    LED:logicalport
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * !main_2 * !main_3)",
-            regmode => 0,
-            clken_mode => 1)
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "905abb3c-9056-42bc-b289-cbb1d4927354",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
         PORT MAP(
-            q => \UART:BUART:rx_counter_load\,
-            main_0 => \UART:BUART:tx_ctrl_mark_last\,
-            main_1 => \UART:BUART:rx_state_0\,
-            main_2 => \UART:BUART:rx_state_3\,
-            main_3 => \UART:BUART:rx_state_2\);
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
 
-    \UART:BUART:rx_postpoll\:macrocell
+    LED(0):iocell
         GENERIC MAP(
-            eqn_main => "(main_0) + (main_1 * main_2)",
-            regmode => 0,
-            clken_mode => 1)
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "LED",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            q => \UART:BUART:rx_postpoll\,
-            main_0 => \UART:BUART:pollcount_1\,
-            main_1 => Net_15,
-            main_2 => \UART:BUART:pollcount_0\);
+            pa_out => LED(0)__PA,
+            oe => open,
+            pin_input => Net_586,
+            pad_out => LED(0)_PAD,
+            pad_in => LED(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
 
-    \UART:BUART:rx_status_4\:macrocell
+    LED_RXTX:logicalport
         GENERIC MAP(
-            eqn_main => "(main_0 * main_1)",
-            regmode => 0,
-            clken_mode => 1)
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "c7cef351-972a-4813-8ade-8f512d22fcec",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
         PORT MAP(
-            q => \UART:BUART:rx_status_4\,
-            main_0 => \UART:BUART:rx_load_fifo\,
-            main_1 => \UART:BUART:rx_fifofull\);
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
 
-    \UART:BUART:rx_status_5\:macrocell
+    LED_RXTX(0):iocell
         GENERIC MAP(
-            eqn_main => "(main_0 * main_1)",
-            regmode => 0,
-            clken_mode => 1)
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "LED_RXTX",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
-            q => \UART:BUART:rx_status_5\,
-            main_0 => \UART:BUART:rx_fifonotempty\,
-            main_1 => \UART:BUART:rx_state_stop1_reg\);
+            pa_out => LED_RXTX(0)__PA,
+            oe => open,
+            pad_in => LED_RXTX(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
 
     Net_612:macrocell
         GENERIC MAP(
@@ -3293,202 +3380,15 @@ BEGIN
             main_1 => \QuadDec:Net_1251\,
             main_2 => \QuadDec:Cnt16:CounterUDB:prevCompare\);
 
-    \UART:TXInternalInterrupt\:interrupt
+    \LED_PWM:PWMUDB:status_2\:macrocell
         GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_20,
-            clock => ClockBlock_BUS_CLK);
-
-    __ONE__:macrocell
-        GENERIC MAP(
-            eqn_main => "1'b0",
+            eqn_main => "(main_0 * main_1)",
             regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            q => __ONE__);
-
-    \UART:BUART:sTX:TxShifter:u0\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000000000000000000000000000000000000000000000000000000011000000000000000000000000000010010000000000000000000000000000000000000011111111000000001111111111111111000000000000000001000100111100000000000000001100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            reset => open,
-            clock => \UART:Net_9\,
-            cs_addr_2 => \UART:BUART:tx_state_1\,
-            cs_addr_1 => \UART:BUART:tx_state_0\,
-            cs_addr_0 => \UART:BUART:tx_bitclk_enable_pre\,
-            so_comb => \UART:BUART:tx_shift_out\,
-            f0_bus_stat_comb => \UART:BUART:tx_fifo_notfull\,
-            f0_blk_stat_comb => \UART:BUART:tx_fifo_empty\,
-            busclk => ClockBlock_BUS_CLK);
-
-    \UART:BUART:sTX:sCLOCK:TxBitClkGen\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "1010100001000000001000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000001111111100000111001000000100000000000101111100000000000000001000",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            reset => open,
-            clock => \UART:Net_9\,
-            cs_addr_0 => \UART:BUART:counter_load_not\,
-            ce0_reg => \UART:BUART:tx_bitclk_enable_pre\,
-            ce1_reg => \UART:BUART:tx_counter_dp\,
-            busclk => ClockBlock_BUS_CLK);
-
-    \UART:BUART:sTX:TxSts\:statusicell
-        GENERIC MAP(
-            cy_force_order => 1,
-            cy_int_mask => "1111111",
-            cy_md_select => "0000001",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            reset => open,
-            clock => \UART:Net_9\,
-            status_6 => open,
-            status_5 => open,
-            status_4 => open,
-            status_3 => \UART:BUART:tx_fifo_notfull\,
-            status_2 => \UART:BUART:tx_status_2\,
-            status_1 => \UART:BUART:tx_fifo_empty\,
-            status_0 => \UART:BUART:tx_status_0\,
-            interrupt => Net_20);
-
-    \UART:BUART:sRX:RxShifter:u0\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000000000000000000000000000000000000000000000000000001001000000000100000000000000010000001100000001000000000000000100100001000011111111000000001111111111111111101000000110001001000001111100000000000000001100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            reset => open,
-            clock => \UART:Net_9\,
-            cs_addr_2 => \UART:BUART:tx_ctrl_mark_last\,
-            cs_addr_1 => \UART:BUART:rx_state_0\,
-            cs_addr_0 => \UART:BUART:rx_bitclk_enable\,
-            route_si => \UART:BUART:rx_postpoll\,
-            f0_load => \UART:BUART:rx_load_fifo\,
-            f0_bus_stat_comb => \UART:BUART:rx_fifonotempty\,
-            f0_blk_stat_comb => \UART:BUART:rx_fifofull\,
-            busclk => ClockBlock_BUS_CLK);
-
-    \UART:BUART:sRX:RxBitCounter\:count7cell
-        GENERIC MAP(
-            cy_alt_mode => 0,
-            cy_init_value => "0000000",
-            cy_period => "1110010",
-            cy_route_en => 1,
-            cy_route_ld => 1,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            clock => \UART:Net_9\,
-            reset => open,
-            load => \UART:BUART:rx_counter_load\,
-            enable => open,
-            count_6 => \UART:BUART:rx_count_6\,
-            count_5 => \UART:BUART:rx_count_5\,
-            count_4 => \UART:BUART:rx_count_4\,
-            count_3 => \UART:BUART:rx_count_3\,
-            count_2 => \UART:BUART:rx_count_2\,
-            count_1 => \UART:BUART:rx_count_1\,
-            count_0 => \UART:BUART:rx_count_0\,
-            tc => \UART:BUART:rx_count7_tc\);
-
-    \UART:BUART:sRX:RxSts\:statusicell
-        GENERIC MAP(
-            cy_force_order => 1,
-            cy_int_mask => "1111111",
-            cy_md_select => "1011111",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            reset => open,
-            clock => \UART:Net_9\,
-            status_6 => open,
-            status_5 => \UART:BUART:rx_status_5\,
-            status_4 => \UART:BUART:rx_status_4\,
-            status_3 => \UART:BUART:rx_status_3\,
-            status_2 => open,
-            status_1 => open,
-            status_0 => open,
-            interrupt => Net_31);
-
-    isr_UART_Rx:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_31,
-            clock => ClockBlock_BUS_CLK);
+            q => \LED_PWM:PWMUDB:status_2\,
+            main_0 => \LED_PWM:PWMUDB:runmode_enable\,
+            main_1 => \LED_PWM:PWMUDB:tc_i\);
 
     isr_Control:interrupt
         GENERIC MAP(
@@ -3539,6 +3439,14 @@ BEGIN
         PORT MAP(
             interrupt => Net_242,
             clock => ClockBlock_BUS_CLK);
+
+    __ONE__:macrocell
+        GENERIC MAP(
+            eqn_main => "1'b0",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => __ONE__);
 
     \Status_Probe:sts_intr:sts_reg\:statusicell
         GENERIC MAP(
@@ -3896,256 +3804,178 @@ BEGIN
             control_0 => Net_442,
             busclk => ClockBlock_BUS_CLK);
 
-    \UART:BUART:txn\:macrocell
+    \USBUART:dp_int\:interrupt
         GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * !main_6) + (main_0 * main_4) + (!main_1 * main_2 * !main_3 * !main_4) + (!main_1 * main_2 * !main_4 * !main_6) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
-            q => \UART:BUART:txn\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:txn\,
-            main_1 => \UART:BUART:tx_state_1\,
-            main_2 => \UART:BUART:tx_state_0\,
-            main_3 => \UART:BUART:tx_shift_out\,
-            main_4 => \UART:BUART:tx_state_2\,
-            main_5 => \UART:BUART:tx_counter_dp\,
-            main_6 => \UART:BUART:tx_bitclk\);
+            interrupt => \USBUART:Net_1010\,
+            clock => ClockBlock_BUS_CLK);
 
-    \UART:BUART:tx_state_1\:macrocell
+    \USBUART:USB\:usbcell
         GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3) + (main_0 * !main_3 * main_4 * main_5) + (main_1 * !main_3 * main_5)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
+            cy_registers => "")
         PORT MAP(
-            q => \UART:BUART:tx_state_1\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:tx_state_1\,
-            main_1 => \UART:BUART:tx_state_0\,
-            main_2 => \UART:BUART:tx_bitclk_enable_pre\,
-            main_3 => \UART:BUART:tx_state_2\,
-            main_4 => \UART:BUART:tx_counter_dp\,
-            main_5 => \UART:BUART:tx_bitclk\);
+            sof_int => Net_511,
+            arb_int => \USBUART:Net_1889\,
+            usb_int => \USBUART:Net_1876\,
+            ept_int_8 => \USBUART:ep_int_8\,
+            ept_int_7 => \USBUART:ep_int_7\,
+            ept_int_6 => \USBUART:ep_int_6\,
+            ept_int_5 => \USBUART:ep_int_5\,
+            ept_int_4 => \USBUART:ep_int_4\,
+            ept_int_3 => \USBUART:ep_int_3\,
+            ept_int_2 => \USBUART:ep_int_2\,
+            ept_int_1 => \USBUART:ep_int_1\,
+            ept_int_0 => \USBUART:ep_int_0\,
+            ord_int => \USBUART:Net_95\,
+            dma_req_7 => \USBUART:dma_request_7\,
+            dma_req_6 => \USBUART:dma_request_6\,
+            dma_req_5 => \USBUART:dma_request_5\,
+            dma_req_4 => \USBUART:dma_request_4\,
+            dma_req_3 => \USBUART:dma_request_3\,
+            dma_req_2 => \USBUART:dma_request_2\,
+            dma_req_1 => \USBUART:dma_request_1\,
+            dma_req_0 => \USBUART:dma_request_0\,
+            dma_termin => \USBUART:dma_terminate\);
 
-    \UART:BUART:tx_state_0\:macrocell
+    \USBUART:ord_int\:interrupt
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * !main_3) + (!main_0 * !main_1 * !main_3 * !main_4) + (main_0 * main_1 * main_2 * main_3 * main_4) + (main_1 * !main_4 * main_5)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
-            q => \UART:BUART:tx_state_0\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:tx_state_1\,
-            main_1 => \UART:BUART:tx_state_0\,
-            main_2 => \UART:BUART:tx_bitclk_enable_pre\,
-            main_3 => \UART:BUART:tx_fifo_empty\,
-            main_4 => \UART:BUART:tx_state_2\,
-            main_5 => \UART:BUART:tx_bitclk\);
+            interrupt => \USBUART:Net_95\,
+            clock => ClockBlock_BUS_CLK);
 
-    \UART:BUART:tx_state_2\:macrocell
+    \USBUART:ep_3\:interrupt
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * main_3) + (main_0 * main_1 * main_2 * main_3) + (main_0 * main_1 * !main_3 * main_5) + (main_0 * !main_3 * main_4 * main_5)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
-            q => \UART:BUART:tx_state_2\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:tx_state_1\,
-            main_1 => \UART:BUART:tx_state_0\,
-            main_2 => \UART:BUART:tx_bitclk_enable_pre\,
-            main_3 => \UART:BUART:tx_state_2\,
-            main_4 => \UART:BUART:tx_counter_dp\,
-            main_5 => \UART:BUART:tx_bitclk\);
+            interrupt => \USBUART:ep_int_3\,
+            clock => ClockBlock_BUS_CLK);
 
-    \UART:BUART:tx_bitclk\:macrocell
+    \USBUART:ep_2\:interrupt
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_3) + (!main_2)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
-            q => \UART:BUART:tx_bitclk\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:tx_state_1\,
-            main_1 => \UART:BUART:tx_state_0\,
-            main_2 => \UART:BUART:tx_bitclk_enable_pre\,
-            main_3 => \UART:BUART:tx_state_2\);
+            interrupt => \USBUART:ep_int_2\,
+            clock => ClockBlock_BUS_CLK);
 
-    \UART:BUART:tx_ctrl_mark_last\:macrocell
+    \USBUART:ep_1\:interrupt
         GENERIC MAP(
-            eqn_main => "1'b0",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
-            q => \UART:BUART:tx_ctrl_mark_last\,
-            clock_0 => \UART:Net_9\);
+            interrupt => \USBUART:ep_int_1\,
+            clock => ClockBlock_BUS_CLK);
 
-    \UART:BUART:rx_state_0\:macrocell
+    \USBUART:ep_0\:interrupt
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * main_4 * !main_8 * !main_9) + (!main_0 * !main_1 * main_2 * !main_3 * main_4 * !main_8 * !main_10) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
-            q => \UART:BUART:rx_state_0\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:tx_ctrl_mark_last\,
-            main_1 => \UART:BUART:rx_state_0\,
-            main_2 => \UART:BUART:rx_bitclk_enable\,
-            main_3 => \UART:BUART:rx_state_3\,
-            main_4 => \UART:BUART:rx_state_2\,
-            main_5 => \UART:BUART:rx_count_6\,
-            main_6 => \UART:BUART:rx_count_5\,
-            main_7 => \UART:BUART:rx_count_4\,
-            main_8 => \UART:BUART:pollcount_1\,
-            main_9 => Net_15,
-            main_10 => \UART:BUART:pollcount_0\);
+            interrupt => \USBUART:ep_int_0\,
+            clock => ClockBlock_BUS_CLK);
 
-    \UART:BUART:rx_load_fifo\:macrocell
+    \USBUART:bus_reset\:interrupt
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * !main_4) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
-            q => \UART:BUART:rx_load_fifo\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:tx_ctrl_mark_last\,
-            main_1 => \UART:BUART:rx_state_0\,
-            main_2 => \UART:BUART:rx_bitclk_enable\,
-            main_3 => \UART:BUART:rx_state_3\,
-            main_4 => \UART:BUART:rx_state_2\,
-            main_5 => \UART:BUART:rx_count_6\,
-            main_6 => \UART:BUART:rx_count_5\,
-            main_7 => \UART:BUART:rx_count_4\);
+            interrupt => \USBUART:Net_1876\,
+            clock => ClockBlock_BUS_CLK);
 
-    \UART:BUART:rx_state_3\:macrocell
+    \USBUART:arb_int\:interrupt
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
-            q => \UART:BUART:rx_state_3\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:tx_ctrl_mark_last\,
-            main_1 => \UART:BUART:rx_state_0\,
-            main_2 => \UART:BUART:rx_bitclk_enable\,
-            main_3 => \UART:BUART:rx_state_3\,
-            main_4 => \UART:BUART:rx_state_2\,
-            main_5 => \UART:BUART:rx_count_6\,
-            main_6 => \UART:BUART:rx_count_5\,
-            main_7 => \UART:BUART:rx_count_4\);
+            interrupt => \USBUART:Net_1889\,
+            clock => ClockBlock_BUS_CLK);
 
-    \UART:BUART:rx_state_2\:macrocell
+    \USBUART:sof_int\:interrupt
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * main_3) + (!main_0 * !main_1 * main_2 * main_4) + (!main_0 * !main_1 * !main_3 * !main_4 * !main_8 * main_9) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7)",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
-            q => \UART:BUART:rx_state_2\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:tx_ctrl_mark_last\,
-            main_1 => \UART:BUART:rx_state_0\,
-            main_2 => \UART:BUART:rx_bitclk_enable\,
-            main_3 => \UART:BUART:rx_state_3\,
-            main_4 => \UART:BUART:rx_state_2\,
-            main_5 => \UART:BUART:rx_count_6\,
-            main_6 => \UART:BUART:rx_count_5\,
-            main_7 => \UART:BUART:rx_count_4\,
-            main_8 => Net_15,
-            main_9 => \UART:BUART:rx_last\);
+            interrupt => Net_511,
+            clock => ClockBlock_BUS_CLK);
 
-    \UART:BUART:rx_bitclk_enable\:macrocell
+    \LED_PWM:PWMUDB:genblk1:ctrlreg\:controlcell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * !main_2)",
-            regmode => 1,
+            cy_ctrl_mode_0 => "11111111",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \UART:BUART:rx_bitclk_enable\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:rx_count_2\,
-            main_1 => \UART:BUART:rx_count_1\,
-            main_2 => \UART:BUART:rx_count_0\);
+            clock => Net_590,
+            control_7 => \LED_PWM:PWMUDB:control_7\,
+            control_6 => \LED_PWM:PWMUDB:control_6\,
+            control_5 => \LED_PWM:PWMUDB:control_5\,
+            control_4 => \LED_PWM:PWMUDB:control_4\,
+            control_3 => \LED_PWM:PWMUDB:control_3\,
+            control_2 => \LED_PWM:PWMUDB:control_2\,
+            control_1 => \LED_PWM:PWMUDB:control_1\,
+            control_0 => \LED_PWM:PWMUDB:control_0\,
+            busclk => ClockBlock_BUS_CLK);
 
-    \UART:BUART:rx_state_stop1_reg\:macrocell
+    \LED_PWM:PWMUDB:genblk8:stsreg\:statusicell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * main_3)",
-            regmode => 1,
+            cy_force_order => 1,
+            cy_int_mask => "1111111",
+            cy_md_select => "0100111",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \UART:BUART:rx_state_stop1_reg\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:tx_ctrl_mark_last\,
-            main_1 => \UART:BUART:rx_state_0\,
-            main_2 => \UART:BUART:rx_state_3\,
-            main_3 => \UART:BUART:rx_state_2\);
+            clock => Net_590,
+            status_6 => open,
+            status_5 => open,
+            status_4 => open,
+            status_3 => \LED_PWM:PWMUDB:status_3\,
+            status_2 => \LED_PWM:PWMUDB:status_2\,
+            status_1 => open,
+            status_0 => \LED_PWM:PWMUDB:status_0\);
 
-    \UART:BUART:pollcount_1\:macrocell
+    \LED_PWM:PWMUDB:sP8:pwmdp:u0\:datapathcell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * !main_2 * main_3 * main_4) + (!main_0 * !main_1 * main_2 * !main_3) + (!main_0 * !main_1 * main_2 * !main_4)",
-            regmode => 1,
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \UART:BUART:pollcount_1\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:rx_count_2\,
-            main_1 => \UART:BUART:rx_count_1\,
-            main_2 => \UART:BUART:pollcount_1\,
-            main_3 => Net_15,
-            main_4 => \UART:BUART:pollcount_0\);
-
-    \UART:BUART:pollcount_0\:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * !main_2 * main_3) + (!main_0 * !main_1 * main_2 * !main_3)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \UART:BUART:pollcount_0\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:rx_count_2\,
-            main_1 => \UART:BUART:rx_count_1\,
-            main_2 => Net_15,
-            main_3 => \UART:BUART:pollcount_0\);
-
-    \UART:BUART:rx_status_3\:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4 * !main_5 * !main_6) + (!main_0 * !main_1 * main_2 * main_3 * main_4 * !main_5 * !main_7)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \UART:BUART:rx_status_3\,
-            clock_0 => \UART:Net_9\,
-            main_0 => \UART:BUART:tx_ctrl_mark_last\,
-            main_1 => \UART:BUART:rx_state_0\,
-            main_2 => \UART:BUART:rx_bitclk_enable\,
-            main_3 => \UART:BUART:rx_state_3\,
-            main_4 => \UART:BUART:rx_state_2\,
-            main_5 => \UART:BUART:pollcount_1\,
-            main_6 => Net_15,
-            main_7 => \UART:BUART:pollcount_0\);
-
-    \UART:BUART:rx_last\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \UART:BUART:rx_last\,
-            clock_0 => \UART:Net_9\,
-            main_0 => Net_15);
+            clock => Net_590,
+            cs_addr_2 => \LED_PWM:PWMUDB:tc_i\,
+            cs_addr_1 => \LED_PWM:PWMUDB:runmode_enable\,
+            cl0_comb => \LED_PWM:PWMUDB:cmp1_less\,
+            z0_comb => \LED_PWM:PWMUDB:tc_i\,
+            f1_blk_stat_comb => \LED_PWM:PWMUDB:status_3\,
+            busclk => ClockBlock_BUS_CLK);
 
     Net_406:macrocell
         GENERIC MAP(
@@ -4409,5 +4239,51 @@ BEGIN
             q => Net_408,
             clock_0 => Net_377,
             main_0 => Net_382);
+
+    \LED_PWM:PWMUDB:runmode_enable\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \LED_PWM:PWMUDB:runmode_enable\,
+            clock_0 => Net_590,
+            main_0 => \LED_PWM:PWMUDB:control_7\);
+
+    \LED_PWM:PWMUDB:prevCompare1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \LED_PWM:PWMUDB:prevCompare1\,
+            clock_0 => Net_590,
+            main_0 => \LED_PWM:PWMUDB:cmp1_less\);
+
+    \LED_PWM:PWMUDB:status_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \LED_PWM:PWMUDB:status_0\,
+            clock_0 => Net_590,
+            main_0 => \LED_PWM:PWMUDB:prevCompare1\,
+            main_1 => \LED_PWM:PWMUDB:cmp1_less\);
+
+    Net_586:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_586,
+            clock_0 => Net_590,
+            main_0 => \LED_PWM:PWMUDB:runmode_enable\,
+            main_1 => \LED_PWM:PWMUDB:cmp1_less\);
 
 END __DEFAULT__;
